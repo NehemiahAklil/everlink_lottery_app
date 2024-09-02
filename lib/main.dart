@@ -1,6 +1,5 @@
 import 'package:everlink_lottery_app/config/themes/themes.dart';
 import 'package:everlink_lottery_app/domain/value_objects/language.dart';
-import 'package:everlink_lottery_app/presentation/widgets/pulsing_horizontal_dot_menu.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/start_page.dart';
 import 'package:flutter/material.dart';
 
