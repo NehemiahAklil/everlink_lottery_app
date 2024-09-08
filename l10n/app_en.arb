@@ -8,5 +8,17 @@
     "onboardingEndTitle": "Sign up to get your first ticket",
     "onboardingEndDescription": "Don’t miss out on turning your house into a dream home.",
     "onboardingContinue": "Continue",
-    "onboardingEnd": "Get Started"
+    "onboardingEnd": "Get Started",
+    "loginWelcome": "Welcome Back",
+    "signUpWelcome": "Welcome",
+    "signUpDescription": "Fill the form below to become a home furniture winner",
+    "emailField": "Email",
+    "usernameField": "Username",
+    "passwordField": "Password",
+    "confirmPasswordField": "Confirm Password",
+    "loginButton": "Login",
+    "signUpButton": "Sign Up",
+    "forgetPasswordPrompt": "Forgot Password?",
+    "signUpPrompt": "Don't Have an account?",
+    "loginPrompt": "Already have an account?"
 }

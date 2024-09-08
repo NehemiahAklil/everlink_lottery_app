@@ -1,6 +1,9 @@
 import 'dart:ui';
+import 'package:everlink_lottery_app/domain/value_objects/language.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/end_page.dart';
+import 'package:everlink_lottery_app/presentation/pages/onboarding/widgets/onboarding_app_bar.dart';
 import 'package:everlink_lottery_app/presentation/widgets/language_modal_bottom_sheet.dart';
+import 'package:everlink_lottery_app/presentation/widgets/logo.dart';
 import 'package:everlink_lottery_app/presentation/widgets/pulsing_horizontal_dot_menu.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:flutter/material.dart';
@@ -16,31 +19,11 @@ class OnboardingMiddlePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-                onPressed: () {
-                  showModalBottomSheet<void>(
-                      context: context,
-                      builder: (context) {
-                        return LanguageModalBottomSheet(context, ref);
-                      });
-                },
-                icon: const Icon(SolarIconsOutline.globus))
-          ],
-          centerTitle: true,
-          title: Text(
-            AppLocalizations.of(context)!.title,
-            style: GoogleFonts.islandMoments(
-                fontSize: Theme.of(context).textTheme.headlineMedium?.fontSize,
-                color: Colors.white),
-          ),
-          backgroundColor: Colors.transparent,
-        ),
+        appBar: OnboardingAppBar(ref),
         body: CustomBackground(
           child: Container(
             margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.01,
+              // top: MediaQuery.of(context).size.height * 0.01,
               bottom: MediaQuery.of(context).size.height * 0.05,
             ),
             width: MediaQuery.of(context).size.width,
@@ -48,9 +31,15 @@ class OnboardingMiddlePage extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.asset('assets/images/undraw_relaxing_at_home.svg',
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    semanticsLabel: "Bg Shape"),
+                const Logo(),
+                Container(
+                  margin: EdgeInsets.symmetric(
+                      vertical: MediaQuery.of(context).size.height * 0.05),
+                  child: SvgPicture.asset(
+                      'assets/images/undraw_relaxing_at_home.svg',
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      semanticsLabel: "Bg Shape"),
+                ),
                 Container(
                   margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.05,

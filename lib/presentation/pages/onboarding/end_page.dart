@@ -1,14 +1,12 @@
-import 'dart:ui';
-import 'package:everlink_lottery_app/presentation/pages/login.dart';
+import 'package:everlink_lottery_app/presentation/pages/auth/login.dart';
+import 'package:everlink_lottery_app/presentation/pages/onboarding/widgets/onboarding_app_bar.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
-import 'package:everlink_lottery_app/presentation/widgets/language_modal_bottom_sheet.dart';
+import 'package:everlink_lottery_app/presentation/widgets/logo.dart';
 import 'package:everlink_lottery_app/presentation/widgets/pulsing_horizontal_dot_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:solar_icons/solar_icons.dart';
 
 class OnboardingEndPage extends ConsumerWidget {
   const OnboardingEndPage({super.key});
@@ -16,31 +14,11 @@ class OnboardingEndPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-                onPressed: () {
-                  showModalBottomSheet<void>(
-                      context: context,
-                      builder: (context) {
-                        return LanguageModalBottomSheet(context, ref);
-                      });
-                },
-                icon: const Icon(SolarIconsOutline.globus))
-          ],
-          centerTitle: true,
-          title: Text(
-            AppLocalizations.of(context)!.title,
-            style: GoogleFonts.islandMoments(
-                fontSize: Theme.of(context).textTheme.headlineMedium?.fontSize,
-                color: Colors.white),
-          ),
-          backgroundColor: Colors.transparent,
-        ),
+        appBar: OnboardingAppBar(ref),
         body: CustomBackground(
           child: Container(
             margin: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.01,
+              // top: MediaQuery.of(context).size.height * 0.01,
               bottom: MediaQuery.of(context).size.height * 0.05,
             ),
             width: MediaQuery.of(context).size.width,
@@ -48,12 +26,13 @@ class OnboardingEndPage extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const Logo(),
                 Container(
                   margin: EdgeInsets.symmetric(
                       vertical: MediaQuery.of(context).size.height * 0.05),
                   child: SvgPicture.asset(
                       'assets/images/undraw_eating_together.svg',
-                      height: MediaQuery.of(context).size.height * 0.35,
+                      height: MediaQuery.of(context).size.height * 0.3,
                       semanticsLabel: "Bg Shape"),
                 ),
                 Container(
@@ -88,7 +67,7 @@ class OnboardingEndPage extends ConsumerWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => LoginPage(),
+                          builder: (context) => Login(),
                         ),
                       );
                     },

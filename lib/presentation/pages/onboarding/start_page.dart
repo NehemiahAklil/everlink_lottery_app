@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/middle_page.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:everlink_lottery_app/presentation/widgets/language_modal_bottom_sheet.dart';
+import 'package:everlink_lottery_app/presentation/widgets/logo.dart';
 import 'package:everlink_lottery_app/presentation/widgets/pulsing_horizontal_dot_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -28,13 +29,13 @@ class OnboardingPage extends ConsumerWidget {
                 },
                 icon: const Icon(SolarIconsOutline.globus))
           ],
-          centerTitle: true,
-          title: Text(
-            AppLocalizations.of(context)!.title,
-            style: GoogleFonts.islandMoments(
-                fontSize: Theme.of(context).textTheme.headlineMedium?.fontSize,
-                color: Colors.white),
-          ),
+          // centerTitle: true,
+          // title: Text(
+          //   AppLocalizations.of(context)!.title,
+          //   style: GoogleFonts.islandMoments(
+          //       fontSize: Theme.of(context).textTheme.displayMedium?.fontSize,
+          //       color: Colors.white),
+          // ),
           backgroundColor: Colors.transparent,
         ),
         body: CustomBackground(
@@ -48,6 +49,7 @@ class OnboardingPage extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const Logo(),
                 SvgPicture.asset('assets/images/undraw_winners.svg',
                     height: MediaQuery.of(context).size.height * 0.4,
                     semanticsLabel: "Bg Shape"),

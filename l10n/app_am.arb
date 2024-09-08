@@ -9,5 +9,17 @@
     "onboardingEndTitle": "የመጀመሪያ ትኬቶን ለማግኘት ይመዝገቡ",
     "onboardingEndDescription": "ቤቶን ወደ ህልም ቤቶው የመቀየር እድሎን እንዳያምልጦት",
     "onboardingContinue": "ቀጥል",
-    "onboardingEnd": "ጀምር"
+    "onboardingEnd": "ጀምር",
+    "loginWelcome": "እንኳን ደህና ቆዩ",
+    "signUpWelcome": "እንኳን ደህና መጡ",
+    "signUpDescription": "ከስር ያለውን ፎርም በመሙላት የቤት ፈርኒቸር ተሽላሚ ይሁኑ",
+    "emailField": "ኢሜል",
+    "usernameField": "የተጠቃሚ ስም",
+    "passwordField": "የይለፍ ቃል",
+    "confirmPasswordField": "የይለፍ ቃል ያረጋግጡ",
+    "loginButton": "ይግቡ",
+    "signUpButton": "ይመዝገቡ",
+    "forgetPasswordPrompt": "የይለፍ ቃሎን ረስተውታል?",
+    "signUpPrompt": "መለያ የሎትም?",
+    "loginPrompt": "አስቀድሞ መለያ አሎት?"
 }
