@@ -1,7 +1,6 @@
 import 'package:everlink_lottery_app/presentation/pages/auth/widgets/auth_top_bar.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:everlink_lottery_app/presentation/widgets/blurred_text_field.dart';
-import 'package:everlink_lottery_app/presentation/widgets/logo.dart';
 import 'package:flutter/material.dart';
 import 'package:everlink_lottery_app/presentation/pages/auth/login.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

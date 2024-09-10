@@ -20,7 +20,7 @@ final trueBlackColorScheme = ColorScheme.fromSeed(
   // surface: Color.fromARGB(243, 29, 36, 41),
   // surface: Color.fromARGB(146, 34, 38, 42),
   // onSurface: Colors.white,
-  onSurface: Color.fromARGB(121, 53, 66, 77),
+  onSurface: const Color.fromARGB(121, 53, 66, 77),
   surface: Colors.black,
   // primaryContainer: Color.fromARGB(121, 53, 66, 77),
   primaryContainer: const Color(0xFFF5EDD9),
@@ -31,11 +31,11 @@ final darkColorScheme = ColorScheme.fromSeed(
   brightness: Brightness.dark,
   seedColor: const Color(0xFF6D9DC5),
   secondary: const Color(0xFF006569),
-  tertiary: Color.fromARGB(255, 5, 161, 167),
+  tertiary: const Color.fromARGB(255, 5, 161, 167),
   primary: const Color(0xFF6D9DC5),
   // surface: Color.fromARGB(243, 29, 36, 41),
-  surface: Color.fromARGB(255, 34, 38, 42),
-  onBackground: Colors.white,
+  surface: const Color.fromARGB(255, 34, 38, 42),
+  onSurface: Colors.white,
   primaryContainer: const Color(0xFF35424d),
 );
 
@@ -43,7 +43,7 @@ ThemeData lightTheme(Language locale) {
   return ThemeData(
     brightness: Brightness.light,
     navigationBarTheme: NavigationBarThemeData(
-      labelTextStyle: MaterialStateProperty.all(const TextStyle(
+      labelTextStyle: WidgetStateProperty.all(const TextStyle(
         color: Color.fromARGB(255, 17, 41, 98),
       )),
     ),
@@ -88,8 +88,8 @@ ThemeData darkTheme(Language locale, bool isTrueDark) {
                         fontWeight: FontWeight.w200,
                       ))
           .apply(
-            bodyColor: Color(0xFFF5EDD9),
-            displayColor: Color(0xFFF5EDD9),
+            bodyColor: const Color(0xFFF5EDD9),
+            displayColor: const Color(0xFFF5EDD9),
           ),
       primaryColor: const Color(0xFFF5EDD9),
       elevatedButtonTheme: ElevatedButtonThemeData(

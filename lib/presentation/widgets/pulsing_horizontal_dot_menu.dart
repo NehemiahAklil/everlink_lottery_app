@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/animation.dart';
 
 class PulsingHorizontalDotMenu extends StatefulWidget {
   const PulsingHorizontalDotMenu({super.key, required this.index});
@@ -18,7 +17,7 @@ class _PulsingHorizontalDotMenuState extends State<PulsingHorizontalDotMenu>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     )..repeat(reverse: true);
   }
 

@@ -11,7 +11,7 @@ abstract class AppTheme {
     return ThemeData(
       brightness: Brightness.light,
       navigationBarTheme: NavigationBarThemeData(
-        labelTextStyle: MaterialStateProperty.all(const TextStyle(
+        labelTextStyle: WidgetStateProperty.all(const TextStyle(
           color: Color.fromARGB(255, 17, 41, 98),
         )),
       ),

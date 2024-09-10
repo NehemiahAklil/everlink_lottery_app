@@ -12,7 +12,7 @@ class AuthTopBar extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       alignment: Alignment.topCenter,
-      height: height ?? MediaQuery.of(context).size.height * 0.2,
+      height: height,
       width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,7 +1,6 @@
 import 'package:everlink_lottery_app/presentation/widgets/language_modal_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:solar_icons/solar_icons.dart';
 
 class OnboardingAppBar extends AppBar {

@@ -67,7 +67,7 @@ class OnboardingEndPage extends ConsumerWidget {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => Login(),
+                          builder: (context) => const Login(),
                         ),
                       );
                     },

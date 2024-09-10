@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/middle_page.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:everlink_lottery_app/presentation/widgets/language_modal_bottom_sheet.dart';
@@ -7,7 +6,6 @@ import 'package:everlink_lottery_app/presentation/widgets/pulsing_horizontal_dot
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:solar_icons/solar_icons.dart';
 

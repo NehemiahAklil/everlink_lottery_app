@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:solar_icons/solar_icons.dart';
 
+// ignore: non_constant_identifier_names
 Widget LanguageModalBottomSheet(BuildContext context, WidgetRef ref) {
   final localeNotifier = ref.read(localeStateProvider.notifier);
   final locale = ref.watch(localeStateProvider);
   return SingleChildScrollView(
     child: Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
