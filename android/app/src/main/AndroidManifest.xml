@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="everlink_lottery_app"
+        android:label="Everlink Lottery"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
