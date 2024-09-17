@@ -3,10 +3,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LanguageSelectionDialog extends StatelessWidget {
   final ValueChanged<String> onLanguageSelected;
+  final String selectedLanguage;
 
   const LanguageSelectionDialog({
     Key? key,
     required this.onLanguageSelected,
+    this.selectedLanguage = 'English',
   }) : super(key: key);
 
   @override
@@ -31,7 +33,7 @@ class LanguageSelectionDialog extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   DropdownButton<String>(
-                    value: 'English',  
+                    value: selectedLanguage,
                     onChanged: (String? newValue) {
                       if (newValue != null) {
                         onLanguageSelected(newValue);
