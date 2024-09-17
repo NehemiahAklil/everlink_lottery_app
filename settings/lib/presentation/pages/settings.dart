@@ -22,6 +22,49 @@ class Settings extends ConsumerWidget {
     final locale = ref.watch(languageProvider); 
     final Color softWhite = const Color(0xFFF5F5F5);
     bool isDarkMode = false;
+    void _showLanguageMenu(BuildContext context, WidgetRef ref) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return LanguageSelectionDialog(
+            onLanguageSelected: (String language) async {
+              final languageNotifier = ref.read(languageProvider.notifier);
+              await languageNotifier.setLocale(language == 'አማርኛ' ? 'am' : 'en');
+              MyApp.setLocale(context, ref.read(languageProvider));
+            },
+          );
+        },
+      );
+    }
+
+    void showLogoutDialog(BuildContext context, VoidCallback onConfirm) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(AppLocalizations.of(context)!.logout),
+            content: Text(AppLocalizations.of(context)!.logout_text),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: Text(AppLocalizations.of(context)!.cancel),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  onConfirm();
+                },
+                child: Text(AppLocalizations.of(context)!.logout),
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    Future<void> _performLogout(BuildContext context) async {
+
+    }
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -142,47 +185,5 @@ class Settings extends ConsumerWidget {
     );
   }
 
-  void _showLanguageMenu(BuildContext context, WidgetRef ref) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return LanguageSelectionDialog(
-          onLanguageSelected: (String language) async {
-            final languageNotifier = ref.read(languageProvider.notifier);
-            await languageNotifier.setLocale(language == 'አማርኛ' ? 'am' : 'en');
-            MyApp.setLocale(context, ref.read(languageProvider));
-          },
-        );
-      },
-    );
-  }
 
-  void showLogoutDialog(BuildContext context, VoidCallback onConfirm) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(AppLocalizations.of(context)!.logout),
-          content: Text(AppLocalizations.of(context)!.logout_text),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(AppLocalizations.of(context)!.cancel),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                onConfirm();
-              },
-              child: Text(AppLocalizations.of(context)!.logout),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  Future<void> _performLogout(BuildContext context) async {
-  
-  }
 }
