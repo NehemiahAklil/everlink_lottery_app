@@ -36,6 +36,8 @@ final validationMessageProvider = StateProvider<String?>((_) => null);
 class ChangePassword extends ConsumerWidget {
   const ChangePassword({Key? key}) : super(key: key);
 
+  static final formKey = GlobalKey<FormState>();
+
   String? _validatePassword(String? password) {
     if (password == null || password.isEmpty) {
       return 'Password cannot be empty';
@@ -52,7 +54,6 @@ class ChangePassword extends ConsumerWidget {
   }
 
   void _changePassword(BuildContext context, WidgetRef ref) {
-    final formKey = GlobalKey<FormState>();
     final currentPasswordController =
     ref.watch(currentPasswordControllerProvider);
     final newPasswordController = ref.watch(newPasswordControllerProvider);
@@ -61,14 +62,11 @@ class ChangePassword extends ConsumerWidget {
 
     if (formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Password changed successfully!'))
+        const SnackBar(content: Text('Password changed successfully!')),
       );
       currentPasswordController.clear();
       newPasswordController.clear();
       confirmPasswordController.clear();
-    } else {
-      ref.read(validationMessageProvider.notifier).state =
-      'Please fix the errors before submitting';
     }
   }
 
@@ -116,7 +114,6 @@ class ChangePassword extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final softWhite = const Color(0xFFF5F5F5);
-    final formKey = GlobalKey<FormState>();
 
     final currentPasswordController =
     ref.watch(currentPasswordControllerProvider);
@@ -131,7 +128,7 @@ class ChangePassword extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Form(
-                key: formKey,
+                key: formKey, // Assign the formKey here
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -191,21 +188,25 @@ class ChangePassword extends ConsumerWidget {
                       labelStyle: TextStyle(color: softWhite),
                     ),
                     const SizedBox(height: 60),
-                    ElevatedButton(
-                      onPressed: () => _changePassword(context, ref),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        side: const BorderSide(color: Color(0xFFB07A4E)),
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                    SizedBox(
+                      width: 100,
+                      child: ElevatedButton(
+                        onPressed: () => _changePassword(context, ref),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          side: const BorderSide(color: Color(0xFFB07A4E)),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: Text(
+                          AppLocalizations.of(context)!.reset,
+                          style: TextStyle(fontSize: 20, color: softWhite),
                         ),
                       ),
-                      child: Text(
-                        AppLocalizations.of(context)!.reset,
-                        style: TextStyle(fontSize: 18, color: softWhite),
-                      ),
                     ),
+
                   ],
                 ),
               ),
