@@ -26,5 +26,12 @@
   "createyouraccount" : "Create your account!",
   "confirmpassword" : "Confirm password",
   "date" : "Date",
-  "july" : "July"
+  "july" : "July",
+  "aboutustext" : "At [app name], we bring joy and excitement to every drawing. Our mission is to give you not only a chance to win, but also a chance to transform your home with amazing furniture. Join us and take a step towards making your dream home a reality.",
+  "contactus" : "Contact us",
+  "mexico" : "Mexico, Addis Ababa",
+  "sofa" : "Sofa",
+  "diningtable" : "Dining table",
+  "kitchencabinet" : "Kitchen Cabinet",
+  "tvstand" : "Tv Stand"
 }

@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'SignUp.dart';
 import 'TicketPage.dart';
@@ -16,19 +17,18 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 0;
 
-  final _items = [
-    SalomonBottomBarItem(icon: const Icon(Icons.home,), title: const Text('Home')),
-    SalomonBottomBarItem(icon: const Icon(CupertinoIcons.ticket), title: const Text('Ticket')),
-    SalomonBottomBarItem(icon: const Icon(Icons.info), title: const Text('About Us')),
-    SalomonBottomBarItem(icon: const Icon(Icons.person), title: const Text('Profile')),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+    final _items = [
+      SalomonBottomBarItem(icon: const Icon(Icons.home,), title: Text(AppLocalizations.of(context)!.home)),
+      SalomonBottomBarItem(icon: const Icon(CupertinoIcons.ticket), title: Text(AppLocalizations.of(context)!.ticket)),
+      SalomonBottomBarItem(icon: const Icon(Icons.info), title: Text(AppLocalizations.of(context)!.aboutus)),
+      SalomonBottomBarItem(icon: const Icon(Icons.person), title:  Text(AppLocalizations.of(context)!.profile)),
+    ];
     return Container(
-
       child: ClipRRect(
-
         child: SalomonBottomBar(
           items: _items,
           currentIndex: _currentIndex,

@@ -6,6 +6,7 @@ import 'package:flutter_application_1/presentation/pages/home.dart';
 import 'package:flutter_application_1/presentation/pages/TicketPage.dart';
 import 'package:flutter_application_1/presentation/pages/profilepage.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'Login.dart';
 
@@ -20,19 +21,18 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 1;
 
-  final _items = [
-    SalomonBottomBarItem(icon: const Icon(Icons.home,), title: const Text('Home')),
-    SalomonBottomBarItem(icon: const Icon(CupertinoIcons.ticket), title: const Text('Ticket')),
-    SalomonBottomBarItem(icon: const Icon(Icons.info), title: const Text('About Us')),
-    SalomonBottomBarItem(icon: const Icon(Icons.person), title: const Text('Profile')),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final _items = [
+      SalomonBottomBarItem(icon:  Icon(Icons.home,), title: Text(AppLocalizations.of(context)!.home)),
+      SalomonBottomBarItem(icon: const Icon(CupertinoIcons.ticket), title: Text(AppLocalizations.of(context)!.ticket)),
+      SalomonBottomBarItem(icon: const Icon(Icons.info), title: Text(AppLocalizations.of(context)!.aboutus)),
+      SalomonBottomBarItem(icon: const Icon(Icons.person), title: Text(AppLocalizations.of(context)!.profile)),
+    ];
+
     return Container(
-
       child: ClipRRect(
-
         child: SalomonBottomBar(
           items: _items,
           currentIndex: _currentIndex,
@@ -58,7 +58,7 @@ class _BottomNavState extends State<BottomNav> {
             } else if (index == 3) {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const ProfilePage()),
+                MaterialPageRoute(builder: (context) => const Profilepage()),
               );
             }
           },
@@ -70,3 +70,4 @@ class _BottomNavState extends State<BottomNav> {
     );
   }
 }
+

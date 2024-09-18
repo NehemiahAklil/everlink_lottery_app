@@ -3,6 +3,7 @@ import 'package:flutter_application_1/presentation/pages/BottomNav.dart';
 import 'package:flutter_application_1/presentation/pages/DrawerPage.dart';
 import 'package:flutter_application_1/presentation/pages/Upcoming.dart';
 import 'package:flutter_application_1/presentation/widgets/background.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TicketPage extends StatefulWidget {
   const TicketPage({super.key});
@@ -16,15 +17,16 @@ class _TicketPageState extends State<TicketPage> {
   final Color softWhite = const Color(0xFFF5F5F5);
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final List<FurnitureItem> furnitureItems = [
-    FurnitureItem(name: 'Sofa', imagePath: 'assets/sofa.jpeg', price: 100),
-    FurnitureItem(name: 'Dining Table', imagePath: 'assets/diningtable.jpg', price: 200),
-    FurnitureItem(name: 'Kitchen Cabinet', imagePath: 'assets/kitchencabinet.jpg', price: 300),
-    FurnitureItem(name: 'TV Stand', imagePath: 'assets/TvStand.png', price: 150),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
+    final List<FurnitureItem> furnitureItems = [
+      FurnitureItem(name: AppLocalizations.of(context)!.sofa, imagePath: 'assets/sofa.jpeg', price: 100),
+      FurnitureItem(name: AppLocalizations.of(context)!.diningtable, imagePath: 'assets/diningtable.jpg', price: 200),
+      FurnitureItem(name: AppLocalizations.of(context)!.kitchencabinet, imagePath: 'assets/kitchencabinet.jpg', price: 300),
+      FurnitureItem(name: AppLocalizations.of(context)!.tvstand, imagePath: 'assets/TvStand.png', price: 150),
+    ];
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: const DrawerPage(),
@@ -58,7 +60,7 @@ class _TicketPageState extends State<TicketPage> {
                 IconButton(
                   icon: const Icon(Icons.notifications, color: Colors.white, size: 36.0),
                   onPressed: () {
-                    // Handle notification icon press
+
                   },
                 ),
                 const SizedBox(width: 15),
@@ -76,34 +78,34 @@ class _TicketPageState extends State<TicketPage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to Tickets page
+
                     setState(() {
-                      isTicketSelected = true; // Mark this button as selected
+                      isTicketSelected = true;
                     });
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: isTicketSelected ? const Color(0xD99D926E) : Colors.transparent,
                     side: const BorderSide(color: Color(0xFFD7B58D)),
                     padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
-                    // Button color
+
                   ),
-                  child: Text('Tickets', style: TextStyle(color: softWhite,fontSize: 16)),
+                  child: Text(AppLocalizations.of(context)!.ticket, style: TextStyle(color: softWhite,fontSize: 16)),
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to Upcoming page
+
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Upcoming()), // Replace with your Upcoming page
+                      MaterialPageRoute(builder: (context) => const Upcoming()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent, // Button color
+                    backgroundColor: Colors.transparent,
                     side: const BorderSide(color: Color(0xFFD7B58D)),
                     padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
                   ),
-                  child: Text('Upcoming tickets', style: TextStyle(color: softWhite, fontSize: 16)),
+                  child: Text(AppLocalizations.of(context)!.upcomingtickets, style: TextStyle(color: softWhite, fontSize: 16)),
                 ),
               ],
             ),
@@ -139,7 +141,7 @@ class FurnitureCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.0),
 
       ),
-      elevation: 6.0, // Increased elevation for a more pronounced shadow
+      elevation: 6.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -167,25 +169,25 @@ class FurnitureCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 8), // Added spacing between text and button
+                const SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () {
-                    // Handle "Play Now" button press
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent, // Transparent background
+                    backgroundColor: Colors.transparent,
                     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                     textStyle: const TextStyle(fontSize: 16),
-                    side: const BorderSide(color: Color(0xFFD7B58D)), // Light brown border
+                    side: const BorderSide(color: Color(0xFFD7B58D)),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    elevation: 4, // Moderate elevation for shadow effect
+                    elevation: 4,
                   ),
                   child: Text(
-                    'Play Now - ${item.price} birr',
-                    style: TextStyle(color: softWhite), // Use soft white color for text
+                    '${AppLocalizations.of(context)!.playnow} - ${item.price} ${AppLocalizations.of(context)!.birr}',
+                    style: TextStyle(color: softWhite),
                   ),
+
                 ),
               ],
             ),

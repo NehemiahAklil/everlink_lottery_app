@@ -6,6 +6,7 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'SignUp.dart';
 import 'TicketPage.dart';
 import 'home.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
 
@@ -16,15 +17,16 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 2;
 
-  final _items = [
-    SalomonBottomBarItem(icon: const Icon(Icons.home,), title: const Text('Home')),
-    SalomonBottomBarItem(icon: const Icon(CupertinoIcons.ticket), title: const Text('Ticket')),
-    SalomonBottomBarItem(icon: const Icon(Icons.info), title: const Text('About Us')),
-    SalomonBottomBarItem(icon: const Icon(Icons.person), title: const Text('Profile')),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final _items = [
+      SalomonBottomBarItem(icon: const Icon(Icons.home,), title: Text(AppLocalizations.of(context)!.home)),
+      SalomonBottomBarItem(icon: const Icon(CupertinoIcons.ticket), title: Text(AppLocalizations.of(context)!.ticket)),
+      SalomonBottomBarItem(icon: const Icon(Icons.info), title: Text(AppLocalizations.of(context)!.aboutus)),
+      SalomonBottomBarItem(icon: const Icon(Icons.person), title: Text(AppLocalizations.of(context)!.profile)),
+    ];
+
     return Container(
 
       child: ClipRRect(
@@ -104,8 +106,8 @@ class _AboutusState extends State<Aboutus> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 35),
                 alignment: Alignment.centerLeft,
-                child: const Text(
-                 'About us', // Assuming you have this translation
+                child: Text(
+                 AppLocalizations.of(context)!.aboutus,
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -122,14 +124,12 @@ class _AboutusState extends State<Aboutus> {
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: softWhite.withOpacity(0.5)),
                     ),
-                    child: const Column(
+                    child:  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 10),
                         Text(
-                          'At [App name], we bring excitement and joy to every draw. Our mission is to offer you not just a chance to win, but an opportunity to transform your home '
-                              'with stunning furniture. Join us and take a step towards making your dream home a reality.'
-                              , // You can add this translation
+                          AppLocalizations.of(context)!.aboutustext,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 20,
@@ -139,7 +139,7 @@ class _AboutusState extends State<Aboutus> {
                         ),
                         SizedBox(height: 30),
                         Text(
-                          'Contact us', // Assuming you have this translation
+                          AppLocalizations.of(context)!.contactus,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 25,
@@ -174,7 +174,7 @@ class _AboutusState extends State<Aboutus> {
                             Icon(Icons.location_on, color: softWhite),
                             SizedBox(width: 12),
                             Text(
-                              'Mexico, Addis Ababa', // Assuming you have this translation
+                             AppLocalizations.of(context)!.mexico,
                               style: TextStyle(fontSize: 20, color: softWhite),
                             ),
                           ],

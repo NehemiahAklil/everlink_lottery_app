@@ -3,6 +3,7 @@ import 'package:flutter_application_1/presentation/pages/DrawerPage.dart';
 import 'package:flutter_application_1/presentation/pages/BottomNav.dart';
 import 'package:flutter_application_1/presentation/pages/TicketPage.dart';
 import 'package:flutter_application_1/presentation/widgets/background.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Upcoming extends StatefulWidget {
   const Upcoming({super.key});
@@ -15,16 +16,17 @@ class _UpcomingState extends State<Upcoming> {
   final Color softWhite = const Color(0xFFF5F5F5);
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  // State variable to track if the Upcoming button is selected
+
   bool isUpcomingSelected = true;
 
 
-  final List<FurnitureItem> furnitureItems = [
-    FurnitureItem(name: 'Sofa', imagePath: 'assets/sofa.jpeg', price: 100)
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final List<FurnitureItem> furnitureItems = [
+      FurnitureItem(name: AppLocalizations.of(context)!.sofa, imagePath: 'assets/sofa.jpeg', price: 100)
+    ];
+
     return Scaffold(
       key: _scaffoldKey,
       endDrawer: const DrawerPage(),
@@ -58,7 +60,7 @@ class _UpcomingState extends State<Upcoming> {
                 IconButton(
                   icon: const Icon(Icons.notifications, color: Colors.white, size: 36.0),
                   onPressed: () {
-                    // Handle notification icon press
+
                   },
                 ),
                 const SizedBox(width: 15),
@@ -76,7 +78,7 @@ class _UpcomingState extends State<Upcoming> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to Tickets page
+
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => const TicketPage()),
@@ -88,23 +90,22 @@ class _UpcomingState extends State<Upcoming> {
                     side: const BorderSide(color: Color(0xFFD7B58D)),
                     padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
                   ),
-                  child: Text('Tickets', style: TextStyle(color: softWhite, fontSize: 16)),
+                  child: Text(AppLocalizations.of(context)!.tickets, style: TextStyle(color: softWhite, fontSize: 16)),
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Navigate to Upcoming page
 
                     setState(() {
-                      isUpcomingSelected = true; // Mark this button as selected
+                      isUpcomingSelected = true; //
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: isUpcomingSelected ? const Color(0xD99D926E) : Colors.transparent, // Change color when selected
+                    backgroundColor: isUpcomingSelected ? const Color(0xD99D926E) : Colors.transparent,
                     side: const BorderSide(color: Color(0xFFD7B58D)),
                     padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
                   ),
-                  child: Text('Upcoming tickets', style: TextStyle(color: softWhite, fontSize: 16)),
+                  child: Text(AppLocalizations.of(context)!.upcomingtickets, style: TextStyle(color: softWhite, fontSize: 16)),
                 ),
               ],
             ),
@@ -169,7 +170,6 @@ class FurnitureCard extends StatelessWidget {
                 const SizedBox(width: 8),
                 ElevatedButton(
                   onPressed: () {
-                    // Handle "Play Now" button press
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.transparent,
@@ -182,8 +182,8 @@ class FurnitureCard extends StatelessWidget {
                     elevation: 4,
                   ),
                   child: Text(
-                    'Date - July 21',
-                    style: TextStyle(color: softWhite),
+                    '${AppLocalizations.of(context)!.date} - ${AppLocalizations.of(context)!.july}',
+                  style: TextStyle(color: softWhite),
                   ),
                 ),
               ],

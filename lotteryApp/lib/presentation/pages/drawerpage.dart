@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class Line10 extends StatelessWidget {
   const Line10({super.key});
 
@@ -24,9 +24,9 @@ class _DrawerPageState extends State<DrawerPage> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 350, // Set the desired width here
+      width: 350,
       child: Drawer(
-        backgroundColor: const Color(0xFF9D926E), // Fully opaque
+        backgroundColor: const Color(0xFF9D926E),
         child: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -47,13 +47,13 @@ class _DrawerPageState extends State<DrawerPage> {
                 child: const Icon(Icons.person, size: 80, color: Colors.white),
               ),
               const SizedBox(height: 25),
-              const Text('User Name', style: TextStyle(fontSize: 25)),
+              Text(AppLocalizations.of(context)!.username, style: TextStyle(fontSize: 25)),
               const SizedBox(height: 40),
               ListTile(
                 leading: const Icon(Icons.person, color: Colors.black),
                 onTap: () {},
-                title: const Text(
-                  'Profile',
+                title: Text(
+                  AppLocalizations.of(context)!.profile,
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
@@ -61,8 +61,8 @@ class _DrawerPageState extends State<DrawerPage> {
               const SizedBox(height: 15),
               ListTile(
                 leading: const Icon(Icons.home, color: Colors.black),
-                title: const Text(
-                  'Home',
+                title:  Text(
+                    AppLocalizations.of(context)!.home,
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
                 onTap: () {},
@@ -71,8 +71,8 @@ class _DrawerPageState extends State<DrawerPage> {
               const SizedBox(height: 15),
               ListTile(
                 leading: const Icon(Icons.airplane_ticket, color: Colors.black),
-                title: const Text(
-                  'Tickets',
+                title: Text(
+                    AppLocalizations.of(context)!.tickets,
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
                 onTap: () {},
@@ -81,8 +81,8 @@ class _DrawerPageState extends State<DrawerPage> {
               const SizedBox(height: 15),
               ListTile(
                 leading: const Icon(Icons.info, color: Colors.black),
-                title: const Text(
-                  'About Us',
+                title: Text(
+                  AppLocalizations.of(context)!.aboutus,
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
                 onTap: () {},
@@ -91,8 +91,8 @@ class _DrawerPageState extends State<DrawerPage> {
               const SizedBox(height: 15),
               ListTile(
                 leading: const Icon(Icons.announcement, color: Colors.black),
-                title: const Text(
-                  'Announcement',
+                title: Text(
+                  AppLocalizations.of(context)!.announcement,
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
                 onTap: () {},
@@ -101,8 +101,8 @@ class _DrawerPageState extends State<DrawerPage> {
               const SizedBox(height: 15),
               ListTile(
                 leading: const Icon(Icons.settings, color: Colors.black),
-                title: const Text(
-                  'Settings',
+                title: Text(
+                  AppLocalizations.of(context)!.settings,
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
                 onTap: () {},
@@ -111,8 +111,8 @@ class _DrawerPageState extends State<DrawerPage> {
               const SizedBox(height: 15),
               ListTile(
                 leading: const Icon(Icons.logout, color: Colors.black),
-                title: const Text(
-                  'Log out',
+                title: Text(
+                  AppLocalizations.of(context)!.logout,
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
                 onTap: () {},

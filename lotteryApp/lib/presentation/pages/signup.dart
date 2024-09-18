@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/pages/Login.dart';
 import 'package:flutter_application_1/presentation/pages/profilepage.dart';
 import 'package:flutter_application_1/presentation/widgets/background.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -36,7 +37,7 @@ class _SignupState extends State<Signup> {
   Widget _buildTextField(String hintText, IconData icon) {
     return TextField(
       decoration: _inputDecoration(hintText, icon),
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(color: softWhite),
     );
   }
 
@@ -49,21 +50,21 @@ class _SignupState extends State<Signup> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Align(
+              Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Create your account!',
+                  AppLocalizations.of(context)!.createyouraccount,
                   style: TextStyle(color: Colors.white, fontSize: 40),
                 ),
               ),
               const SizedBox(height: 40),
-              _buildTextField('Email', Icons.email),
+              _buildTextField(AppLocalizations.of(context)!.email, Icons.email),
               const SizedBox(height: 35),
-              _buildTextField('Username', Icons.person),
+              _buildTextField(AppLocalizations.of(context)!.username, Icons.person),
               const SizedBox(height: 35),
-              _buildTextField('Password', Icons.lock),
+              _buildTextField(AppLocalizations.of(context)!.password, Icons.lock),
               const SizedBox(height: 35),
-              _buildTextField('Confirm password', Icons.lock),
+              _buildTextField(AppLocalizations.of(context)!.confirmpassword, Icons.lock),
 
               const SizedBox(height: 50),
               ElevatedButton(
@@ -76,17 +77,17 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 onPressed: () {
-                  // Add your login logic here
+
                 },
-                child: Text('Login', style: TextStyle(color: softWhite, fontSize: 20)),
+                child: Text(AppLocalizations.of(context)!.login, style: TextStyle(color: softWhite, fontSize: 20)),
               ),
               const SizedBox(height: 40),
               ElevatedButton.icon(
                 onPressed: () {
-                  // Add your Google login logic here
+
                 },
                 icon: const Icon(Icons.g_translate),
-                label: Text('Continue with Google', style: TextStyle(color: softWhite, fontSize: 20)),
+                label: Text(AppLocalizations.of(context)!.contiunewithgoogle, style: TextStyle(color: softWhite, fontSize: 20)),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                   side: const BorderSide(color: Color(0xFFD7B58D)),
@@ -101,10 +102,10 @@ class _SignupState extends State<Signup> {
                 alignment: Alignment.bottomRight,
                 child: TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Profilepage()));
                   },
                   child: Text(
-                    'Have an account? Log in',
+                    AppLocalizations.of(context)!.haveanaccount,
                     style: TextStyle(color: softWhite, fontSize: 18),
                   ),
                 ),

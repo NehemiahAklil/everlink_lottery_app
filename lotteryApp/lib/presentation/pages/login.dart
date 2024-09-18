@@ -26,14 +26,14 @@ class _LoginState extends State<Login> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Welcome Back!',
+                  AppLocalizations.of(context)!.welcomeback,
                   style: TextStyle(color: softWhite, fontSize: 40),
                 ),
               ),
               const SizedBox(height: 50),
               TextField(
                 decoration: InputDecoration(
-                  hintText: 'Email',
+                  hintText: AppLocalizations.of(context)!.email,
                   hintStyle: const TextStyle(color: Colors.white),
                   prefixIcon: const Icon(Icons.email, color: Colors.grey),
                   border: OutlineInputBorder(
@@ -54,9 +54,9 @@ class _LoginState extends State<Login> {
               const SizedBox(height: 40),
               TextField(
 
-                obscureText: true, // Hide the password input
+                obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Password',
+                  hintText: AppLocalizations.of(context)!.password,
                   hintStyle: const TextStyle(color: Colors.white),
                   prefixIcon: const Icon(Icons.lock, color: Colors.grey),
                   border: OutlineInputBorder(
@@ -78,7 +78,7 @@ class _LoginState extends State<Login> {
               Align(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  'Forgot password?',
+                  AppLocalizations.of(context)!.forgotpassword,
                   style: TextStyle(color: softWhite, fontSize: 18),
                 ),
               ),
@@ -98,7 +98,7 @@ class _LoginState extends State<Login> {
 
                 },
                 child: Text(
-                  'Login',
+                  AppLocalizations.of(context)!.login,
                   style: TextStyle(color: softWhite, fontSize: 20),
                 ),
               ),
@@ -109,7 +109,7 @@ class _LoginState extends State<Login> {
                 },
                 icon: const Icon(Icons.g_translate),
                 label: Text(
-                  'Continue with Google',
+                  AppLocalizations.of(context)!.contiunewithgoogle,
                   style: TextStyle(color: softWhite, fontSize: 20),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -133,7 +133,7 @@ class _LoginState extends State<Login> {
                     );
                   },
                   child: Text(
-                    'New user? Sign up',
+                    AppLocalizations.of(context)!.newusersignup,
                     style: TextStyle(color: softWhite, fontSize: 18),
                   ),
                 ),
