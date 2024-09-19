@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "674122753895",
+    "project_id": "everlink-lottery",
+    "storage_bucket": "everlink-lottery.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674122753895:android:b5100085ea22546afbf1c2",
+        "android_client_info": {
+          "package_name": "com.ever"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACmhqNONnU46MB3ojOY6902nRCKGIiWmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674122753895:android:d55e696a46ca2703fbf1c2",
+        "android_client_info": {
+          "package_name": "com.everlinkers.lottery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACmhqNONnU46MB3ojOY6902nRCKGIiWmg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
