@@ -42,9 +42,10 @@ class BlurredTextField extends StatelessWidget {
         SizedBox(
           height: MediaQuery.of(context).size.height * height,
           width: MediaQuery.of(context).size.width,
-          child: TextField(
+          child: TextFormField(
             controller: controller,
             obscureText: isObscured ?? false,
+            // validator: (value) {},
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),

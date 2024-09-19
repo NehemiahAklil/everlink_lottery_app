@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:solar_icons/solar_icons.dart';
 
 class OnboardingPage extends ConsumerWidget {
@@ -82,11 +83,12 @@ class OnboardingPage extends ConsumerWidget {
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const OnboardingMiddlePage(),
-                        ),
-                      );
+                      context.go('/onboarding_middle');
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const OnboardingMiddlePage(),
+                      //   ),
+                      // );
                     },
                     style: const ButtonStyle(
                       padding: WidgetStatePropertyAll(

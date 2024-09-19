@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 
 class OnboardingMiddlePage extends ConsumerWidget {
   const OnboardingMiddlePage({super.key});
@@ -66,11 +67,12 @@ class OnboardingMiddlePage extends ConsumerWidget {
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const OnboardingEndPage(),
-                        ),
-                      );
+                      context.go('/onboarding_end');
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const OnboardingEndPage(),
+                      //   ),
+                      // );
                     },
                     style: const ButtonStyle(
                       padding: WidgetStatePropertyAll(
