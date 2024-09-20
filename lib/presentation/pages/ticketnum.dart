@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Ticketnumber (),
+      home: Ticketnumber(),
     );
   }
 }
@@ -20,13 +21,15 @@ class Ticketnumber extends StatefulWidget {
   _TicketnumberState createState() => _TicketnumberState();
 }
 
-class _TicketnumberState extends State<Ticketnumber > {
+class _TicketnumberState extends State<Ticketnumber> {
   List<int> selectedNumbers = [];
-  final int maxSelections = 1;
   List<int> numbers = List.generate(100, (index) => index + 1);
   List<int> filteredNumbers = [];
   TextEditingController searchController = TextEditingController();
   FocusNode searchFocusNode = FocusNode();
+
+  // Simulate a logged-in status
+  bool isLoggedIn = false; // Change this to true if user is logged in
 
   @override
   void initState() {
@@ -134,7 +137,6 @@ class _TicketnumberState extends State<Ticketnumber > {
                     ),
                   )).toList(),
                 ),
-                // const SizedBox(height: 4),
                 Expanded(
                   child: GridView.builder(
                     padding: EdgeInsets.only(top: 10),
@@ -181,7 +183,21 @@ class _TicketnumberState extends State<Ticketnumber > {
                     padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
                   ),
                   onPressed: () {
-
+                    if (selectedNumbers.isEmpty) {
+                      // Show a message if no number is selected
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Please select a number before proceeding.')),
+                      );
+                    } else {
+                      // Check if the user is logged in
+                      if (isLoggedIn) {
+                        // Navigate to the payment page
+                        context.go('/payment'); // Change to your actual payment route
+                      } else {
+                        // Navigate to the login page
+                        context.go('/login');
+                      }
+                    }
                   },
                   child: const Text('Buy Ticket', style: TextStyle(color: Colors.white, fontSize: 18)),
                 ),
