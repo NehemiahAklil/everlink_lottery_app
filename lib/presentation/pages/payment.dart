@@ -2,6 +2,7 @@ import 'package:everlink_lottery_app/presentation/pages/bottomnav.dart';
 import 'package:everlink_lottery_app/presentation/pages/drawerpage.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -15,7 +16,9 @@ class Payment extends StatefulWidget {
 
 class _PaymentState extends State<Payment> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  String _selectedPaymentMethod = '';
+  bool isTelebirrSelected = false;
+  bool isMpesaSelected = false;
+  bool isBankSelected = false;
   String _phoneNumber = '';
   String _bankAccountDetails = '';
   File? _image;
@@ -26,88 +29,164 @@ class _PaymentState extends State<Payment> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        title: const Text('Select Payment Method'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            RadioListTile(
-              title: const Text('Telebirr'),
-              value: 'Telebirr',
-              groupValue: _selectedPaymentMethod,
-              onChanged: (value) {
-                setState(() {
-                  _selectedPaymentMethod = value as String;
-                  _phoneNumber = '0900990088';
-                });
-              },
-            ),
-            RadioListTile(
-              title: const Text('Mpesa'),
-              value: 'Mpesa',
-              groupValue: _selectedPaymentMethod,
-              onChanged: (value) {
-                setState(() {
-                  _selectedPaymentMethod = value as String;
-                  _phoneNumber = '0700880098';
-                });
-              },
-            ),
-            RadioListTile(
-              title: const Text('Bank'),
-              value: 'Bank',
-              groupValue: _selectedPaymentMethod,
-              onChanged: (value) {
-                setState(() {
-                  _selectedPaymentMethod = value as String;
-                  _bankAccountDetails = 'Commercial Bank: 1000427446439\nAbissinia Bank: 10233445';
-                });
-              },
-            ),
-            const SizedBox(height: 20),
-            Text(_phoneNumber.isNotEmpty ? 'Phone Number: $_phoneNumber' : ''),
-            Text(_bankAccountDetails.isNotEmpty ? 'Bank Account Details: $_bankAccountDetails' : ''),
-            const SizedBox(height: 20),
-            _image != null ? Image.file(_image!) : const Text('No image selected'),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                final pickedFile = await _picker.pickImage(source: ImageSource.camera);
-                setState(() {
-                  if (pickedFile != null) {
-                    _image = File(pickedFile.path);
+      body: CustomBackground(
+        child: Container(
+          margin: const EdgeInsets.only(top: 50),
+          child: Column(
+            children: [
+              const Text(
+                'Choose Your Payment Method', // Informational text
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              const SizedBox(height: 20),
+              CheckboxListTile(
+                title: const Text('Telebirr', style: TextStyle(color: Colors.white)),
+                value: isTelebirrSelected,
+                onChanged: (value) {
+                  setState(() {
+                    isTelebirrSelected = value!;
+                    _phoneNumber = isTelebirrSelected ? '0900990088' : '';
+                    if (isTelebirrSelected) {
+                      isMpesaSelected = false;
+                      isBankSelected = false;
+                      _bankAccountDetails = '';
+                    }
+                  });
+                },
+              ),
+              CheckboxListTile(
+                title: const Text('Mpesa', style: TextStyle(color: Colors.white)),
+                value: isMpesaSelected,
+                onChanged: (value) {
+                  setState(() {
+                    isMpesaSelected = value!;
+                    _phoneNumber = isMpesaSelected ? '0700880098' : '';
+                    if (isMpesaSelected) {
+                      isTelebirrSelected = false;
+                      isBankSelected = false;
+                      _bankAccountDetails = '';
+                    }
+                  });
+                },
+              ),
+              CheckboxListTile(
+                title: const Text('Bank', style: TextStyle(color: Colors.white)),
+                value: isBankSelected,
+                onChanged: (value) {
+                  setState(() {
+                    isBankSelected = value!;
+                    _bankAccountDetails = isBankSelected ? 'Commercial Bank: 1000427446439\nAbissinia Bank: 10233445' : '';
+                    if (isBankSelected) {
+                      isTelebirrSelected = false;
+                      isMpesaSelected = false;
+                      _phoneNumber = '';
+                    }
+                  });
+                },
+              ),
+              const SizedBox(height: 20),
+              Text(
+                _phoneNumber.isNotEmpty ? 'Phone Number: $_phoneNumber' : '',
+                style: const TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              Text(
+                _bankAccountDetails.isNotEmpty ? 'Bank Account Details: $_bankAccountDetails' : '',
+                style: const TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              const SizedBox(height: 20),
+              _image != null ? Image.file(_image!) : const Text('No image selected', style: TextStyle(color: Colors.white)),
+              const SizedBox(height: 20),
+
+              const SizedBox(height: 20),
+              const Text(
+                'To contact you please enter your phone number', // Informational text
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintText: 'Enter your phone number',
+                  hintStyle: const TextStyle(color: Colors.white70),
+                  filled: true,
+                  fillColor: Colors.black54,
+                  border: const OutlineInputBorder(),
+                ),
+                onChanged: (value) {
+                  setState(() {
+                    _phoneNumber = value;
+                  });
+                },
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Pay and send the transaction screenshot', // Informational text
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () async {
+                      final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+                      setState(() {
+                        if (pickedFile != null) {
+                          _image = File(pickedFile.path);
+                        } else {
+                          _image = null;
+                        }
+                      });
+                    },
+                    child: const Text('Take Photo', style: TextStyle(color: Colors.black)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+                      setState(() {
+                        if (pickedFile != null) {
+                          _image = File(pickedFile.path);
+                        } else {
+                          _image = null;
+                        }
+                      });
+                    },
+                    child: const Text('Upload Image', style: TextStyle(color: Colors.black)),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: () {
+                  if (isTelebirrSelected || isMpesaSelected || isBankSelected) {
+                    print('Selected payment methods:');
+                    if (isTelebirrSelected) {
+                      print('Telebirr selected with Phone Number: $_phoneNumber');
+                    }
+                    if (isMpesaSelected) {
+                      print('Mpesa selected with Phone Number: $_phoneNumber');
+                    }
+                    if (isBankSelected) {
+                      print('Bank selected with Account Details: $_bankAccountDetails');
+                    }
+                    if (_image != null) {
+                      _uploadImageToFirebaseStorage();
+                    }
                   } else {
-                    _image = null;
+                    print('Please select at least one payment method');
                   }
-                });
-              },
-              child: const Text('Upload Screenshot'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Handle payment method selection
-                if (_selectedPaymentMethod.isNotEmpty) {
-                  // Process payment with selected method
-                  print('Selected payment method: $_selectedPaymentMethod');
-                  if (_phoneNumber.isNotEmpty) {
-                    print('Phone Number: $_phoneNumber');
-                  }
-                  if (_bankAccountDetails.isNotEmpty) {
-                    print('Bank Account Details: $_bankAccountDetails');
-                  }
-                  if (_image != null) {
-                    _uploadImageToFirebaseStorage();
-                  }
-                } else {
-                  print('Please select a payment method');
-                }
-              },
-              child: const Text('Proceed to Payment'),
-            ),
-          ],
+                },
+                child: const Text('Proceed to Payment', style: TextStyle(color: Colors.black)),
+              ),
+              const SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: () {
+                  context.go('/ticketpage'); // Go back to the previous page
+                },
+                child: const Text('Back to Home', style: TextStyle(color: Colors.black)),
+              ),
+            ],
+          ),
         ),
       ),
     );
