@@ -1,9 +1,4 @@
-import 'package:everlink_lottery_app/presentation/pages/aboutus.dart';
-import 'package:everlink_lottery_app/presentation/pages/home.dart';
-import 'package:everlink_lottery_app/presentation/pages/profilepage.dart';
-import 'package:everlink_lottery_app/presentation/pages/ticketpage.dart';
 import 'package:everlink_lottery_app/presentation/providers/page_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -40,7 +35,7 @@ class BottomNav extends ConsumerWidget {
             ref.read(pageIndexProvider.notifier).setIndex(index);
             switch (index) {
               case 1:
-                context.pushReplacement('/ticket');
+                context.pushReplacement('/home');
                 break;
               case 2:
                 context.pushReplacement('/info');
@@ -50,7 +45,7 @@ class BottomNav extends ConsumerWidget {
                 break;
               case 0:
               default:
-                context.pushReplacement('/home');
+                context.pushReplacement('/ticket');
                 break;
             }
           },
