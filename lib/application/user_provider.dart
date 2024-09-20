@@ -10,5 +10,5 @@ class UserNotifier extends _$UserNotifier {
   }
 
   void set(User user) => state = user;
-  void clear(User user) => state = null;
+  void clear() => state = null;
 }

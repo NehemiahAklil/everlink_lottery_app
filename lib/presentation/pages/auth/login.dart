@@ -35,7 +35,7 @@ class Login extends ConsumerWidget {
           debugPrint("ON LOGIN");
           debugPrint(user.email);
           ref.read(userNotifierProvider.notifier).set(user);
-          context.go("/home");
+          context.go("/ticket");
           ref.read(authFieldsNotifierProvider.notifier).clear();
         },
         unauthenticated: (message) =>

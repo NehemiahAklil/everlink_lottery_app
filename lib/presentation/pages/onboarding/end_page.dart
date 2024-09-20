@@ -66,7 +66,7 @@ class OnboardingEndPage extends ConsumerWidget {
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: ElevatedButton(
                     onPressed: () {
-                      context.push('/login');
+                      context.push('/home');
                       // Navigator.of(context).push(
                       //   MaterialPageRoute(
                       //     builder: (context) => const Login(),

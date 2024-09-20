@@ -1,26 +1,27 @@
-import 'package:everlink_lottery_app/application/user_provider.dart';
-import 'package:everlink_lottery_app/utils/helper.dart';
+import 'package:everlink_lottery_app/presentation/pages/aboutus.dart';
+import 'package:everlink_lottery_app/presentation/pages/bottomnav.dart';
+import 'package:everlink_lottery_app/presentation/pages/drawerpage.dart';
+import 'package:everlink_lottery_app/presentation/pages/upcoming.dart';
+import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:solar_icons/solar_icons.dart';
 
-class HomePage extends ConsumerStatefulWidget {
-  const HomePage({super.key});
+class TicketPage extends StatefulWidget {
+  const TicketPage({super.key});
 
   @override
-  ConsumerState<HomePage> createState() => _HomePageState();
+  State<TicketPage> createState() => _TicketPageState();
 }
 
-class _HomePageState extends ConsumerState<HomePage> {
+class _TicketPageState extends State<TicketPage> {
   bool isTicketSelected = true;
   final Color softWhite = const Color(0xFFF5F5F5);
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
-    String emailName =
-        extractBeforeAt(ref.watch(userNotifierProvider)?.email ?? "");
     final List<FurnitureItem> furnitureItems = [
       FurnitureItem(
           name: AppLocalizations.of(context)!.sofa,
@@ -42,12 +43,8 @@ class _HomePageState extends ConsumerState<HomePage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 30),
-          Text(
-            "Welcome ${emailName}",
-            textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          const SizedBox(height: 1),
+          _buildHeader(),
           const SizedBox(height: 20),
           ...furnitureItems
               .map((item) => FurnitureCard(item: item, softWhite: softWhite))
@@ -77,7 +74,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                   icon: const Icon(SolarIconsOutline.hamburgerMenu,
                       color: Colors.white, size: 36.0),
                   onPressed: () {
-                    _scaffoldKey.currentState?.openEndDrawer();
+                    Scaffold.of(context).openEndDrawer();
+                    // ._scaffoldKey
+                    // .currentState
+                    // ?.openEndDrawer();
                   },
                 ),
               ],

@@ -1,3 +1,5 @@
+import 'package:everlink_lottery_app/presentation/pages/bottomnav.dart';
+import 'package:everlink_lottery_app/presentation/pages/drawerpage.dart';
 import 'package:everlink_lottery_app/presentation/pages/shared/bottom_navigation.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:flutter/material.dart';
@@ -20,17 +22,18 @@ class _BottomNavigationBarScaffoldState
   int currentIndex = 0;
   void changeTab(int index) {
     switch (index) {
-      case 0:
-        context.go('/home');
-        break;
       case 1:
-        context.go('/ticket');
+        context.pushReplacement('/ticket');
         break;
       case 2:
-        context.go('/info');
+        context.pushNamed('/info');
         break;
+      case 3:
+        context.pushNamed('/profile');
+        break;
+      case 0:
       default:
-        context.go('/profile');
+        context.pushReplacement('/home');
         break;
     }
     setState(() {
@@ -38,12 +41,16 @@ class _BottomNavigationBarScaffoldState
     });
   }
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: const DrawerPage(),
+      bottomNavigationBar: const BottomNav(),
+      drawer: const DrawerPage(),
       extendBody: true,
       body: CustomBackground(child: widget.child),
-      bottomNavigationBar: BottomNavBar(),
     );
   }
 }

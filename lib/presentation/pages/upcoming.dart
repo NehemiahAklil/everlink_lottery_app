@@ -1,58 +1,54 @@
-import 'package:everlink_lottery_app/application/user_provider.dart';
-import 'package:everlink_lottery_app/utils/helper.dart';
+import 'package:everlink_lottery_app/presentation/pages/aboutus.dart';
+import 'package:everlink_lottery_app/presentation/pages/bottomnav.dart';
+import 'package:everlink_lottery_app/presentation/pages/drawerpage.dart';
+import 'package:everlink_lottery_app/presentation/pages/ticketpage.dart';
+import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:solar_icons/solar_icons.dart';
 
-class HomePage extends ConsumerStatefulWidget {
-  const HomePage({super.key});
+class Upcoming extends StatefulWidget {
+  const Upcoming({super.key});
 
   @override
-  ConsumerState<HomePage> createState() => _HomePageState();
+  State<Upcoming> createState() => _UpcomingState();
 }
 
-class _HomePageState extends ConsumerState<HomePage> {
-  bool isTicketSelected = true;
+class _UpcomingState extends State<Upcoming> {
   final Color softWhite = const Color(0xFFF5F5F5);
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  bool isUpcomingSelected = true;
+
   @override
   Widget build(BuildContext context) {
-    String emailName =
-        extractBeforeAt(ref.watch(userNotifierProvider)?.email ?? "");
     final List<FurnitureItem> furnitureItems = [
       FurnitureItem(
           name: AppLocalizations.of(context)!.sofa,
-          imagePath: 'assets/sofa.jpeg',
-          price: 100),
-      FurnitureItem(
-          name: AppLocalizations.of(context)!.diningtable,
-          imagePath: 'assets/diningtable.jpg',
-          price: 200),
-      FurnitureItem(
-          name: AppLocalizations.of(context)!.kitchencabinet,
-          imagePath: 'assets/kitchencabinet.jpg',
-          price: 300),
-      FurnitureItem(
-          name: AppLocalizations.of(context)!.tvstand,
-          imagePath: 'assets/TvStand.png',
-          price: 150),
+          imagePath: 'assets/images/sofa_golden.jpg',
+          price: 100)
     ];
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const SizedBox(height: 30),
-          Text(
-            "Welcome ${emailName}",
-            textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.headlineSmall,
+
+    return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: const DrawerPage(),
+      bottomNavigationBar: const BottomNav(),
+      drawer: const Drawer(),
+      body: CustomBackground(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 15),
+              _buildHeader(),
+              const SizedBox(height: 20),
+              ...furnitureItems
+                  .map(
+                      (item) => FurnitureCard(item: item, softWhite: softWhite))
+                  .toList(),
+            ],
           ),
-          const SizedBox(height: 20),
-          ...furnitureItems
-              .map((item) => FurnitureCard(item: item, softWhite: softWhite))
-              .toList(),
-        ],
+        ),
       ),
     );
   }
@@ -88,28 +84,28 @@ class _HomePageState extends ConsumerState<HomePage> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      isTicketSelected = true;
-                    });
+                    context.go('/ticket');
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: isTicketSelected
-                        ? const Color(0xD99D926E)
-                        : Colors.transparent,
+                    backgroundColor: Colors.transparent,
                     side: const BorderSide(color: Color(0xFFD7B58D)),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 15),
                   ),
-                  child: Text(AppLocalizations.of(context)!.ticket,
+                  child: Text(AppLocalizations.of(context)!.tickets,
                       style: TextStyle(color: softWhite, fontSize: 16)),
                 ),
-                // const SizedBox(width: 20),
+                const SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
-                    context.go('/upcoming');
+                    setState(() {
+                      isUpcomingSelected = true; //
+                    });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: isUpcomingSelected
+                        ? const Color(0xD99D926E)
+                        : Colors.transparent,
                     side: const BorderSide(color: Color(0xFFD7B58D)),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 30, vertical: 15),
@@ -193,7 +189,7 @@ class FurnitureCard extends StatelessWidget {
                     elevation: 4,
                   ),
                   child: Text(
-                    '${AppLocalizations.of(context)!.playnow} - ${item.price} ${AppLocalizations.of(context)!.birr}',
+                    '${AppLocalizations.of(context)!.date} - ${AppLocalizations.of(context)!.july}',
                     style: TextStyle(color: softWhite),
                   ),
                 ),

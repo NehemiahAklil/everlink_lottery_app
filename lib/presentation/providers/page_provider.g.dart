@@ -1,24 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_provider.dart';
+part of 'page_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$userNotifierHash() => r'3f86149a79d3f19bdd48bcc3bf44355044b47299';
+String _$pageIndexHash() => r'0687b8d97ec09ce31b006f9532453ae12e6e244e';
 
-/// See also [UserNotifier].
-@ProviderFor(UserNotifier)
-final userNotifierProvider = NotifierProvider<UserNotifier, User?>.internal(
-  UserNotifier.new,
-  name: r'userNotifierProvider',
+/// See also [PageIndex].
+@ProviderFor(PageIndex)
+final pageIndexProvider = AutoDisposeNotifierProvider<PageIndex, int>.internal(
+  PageIndex.new,
+  name: r'pageIndexProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$userNotifierHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$pageIndexHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UserNotifier = Notifier<User?>;
+typedef _$PageIndex = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
