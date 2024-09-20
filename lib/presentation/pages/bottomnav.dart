@@ -27,8 +27,8 @@ class BottomNav extends ConsumerWidget {
           icon: const Icon(SolarIconsBold.infoCircle),
           title: Text(AppLocalizations.of(context)!.aboutus)),
       SalomonBottomBarItem(
-          icon: const Icon(SolarIconsBold.user),
-          title: Text(AppLocalizations.of(context)!.profile)),
+          icon: const Icon(SolarIconsBold.settings),
+          title: Text(AppLocalizations.of(context)!.settings)),
     ];
 
     return Container(
