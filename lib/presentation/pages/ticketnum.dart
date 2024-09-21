@@ -27,6 +27,8 @@ class _TicketnumberState extends State<Ticketnumber> {
   List<int> filteredNumbers = [];
   TextEditingController searchController = TextEditingController();
   FocusNode searchFocusNode = FocusNode();
+  int _selectedLotteryNumber = 0; // Add this variable to store the selected lottery number
+
 
   // Simulate a logged-in status
   bool isLoggedIn = false; // Change this to true if user is logged in
@@ -51,6 +53,7 @@ class _TicketnumberState extends State<Ticketnumber> {
       } else {
         selectedNumbers.clear();
         selectedNumbers.add(number);
+        _selectedLotteryNumber = number;
       }
     });
   }
@@ -88,7 +91,7 @@ class _TicketnumberState extends State<Ticketnumber> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        context.go('/ticket');
                       },
                       icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
                       iconSize: 30,
@@ -189,14 +192,7 @@ class _TicketnumberState extends State<Ticketnumber> {
                         const SnackBar(content: Text('Please select a number before proceeding.')),
                       );
                     } else {
-                      // Check if the user is logged in
-                      if (isLoggedIn) {
-                        // Navigate to the payment page
-                        context.go('/payment'); // Change to your actual payment route
-                      } else {
-                        // Navigate to the login page
-                        context.go('/login');
-                      }
+                      context.go('/payment', extra: {'selectedLotteryNumber': _selectedLotteryNumber});
                     }
                   },
                   child: const Text('Buy Ticket', style: TextStyle(color: Colors.white, fontSize: 18)),

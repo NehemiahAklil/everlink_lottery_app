@@ -31,7 +31,9 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
       width: 350,
       child: Drawer(
         backgroundColor: const Color(0xFF9D926E),
-        child: Container(
+    child: SingleChildScrollView(
+
+    child: Container(
           width: MediaQuery.of(context).size.width, 
           height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
@@ -140,6 +142,7 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

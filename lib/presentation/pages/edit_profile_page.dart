@@ -1,5 +1,3 @@
-import 'package:everlink_lottery_app/presentation/pages/bottomnav.dart';
-import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:flutter/material.dart';
 
 class EditProfilePage extends StatefulWidget {
@@ -134,23 +132,24 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   "Edit Profile",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-                DropdownButton<String>(
-                  value: selectedOption,
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      selectedOption = newValue;
-                    });
-                  },
-                  items: <String>['Option 1', 'Option 2', 'Option 3']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  underline: SizedBox(), // Remove underline
-                  icon: Icon(Icons.arrow_drop_down), // Dropdown icon
-                ),
+                // DropdownButton<String>(
+                //   value: selectedOption,
+                //   onChanged: (String? newValue) {
+                //     setState(() {
+                //       selectedOption = newValue;
+                //     });
+                //   },
+                //  items: <String>['Option 1', 'Option 2', 'Option 3']
+                //       .map<DropdownMenuItem<String>>((String value) {
+                //     return DropdownMenuItem<String>(
+                //       value: value,
+                //       child: Text(value),
+                //     );
+                //   }).toList(),
+                //   underline: SizedBox(), // Remove underline
+                //   */
+                //   icon: Icon(Icons.arrow_drop_down), // Dropdown icon
+                // ),
               ],
             ),
             SizedBox(height: 15),
@@ -160,12 +159,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
               children: [
                 Expanded(
                   child: TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        // Simple validation: check if the username is not empty
-                        isUsernameValid = value.isNotEmpty;
-                      });
-                    },
+                    // onChanged: (value) {
+                    //   setState(() {
+                    //     // Simple validation: check if the username is not empty
+                    //     isUsernameValid = value.isNotEmpty;
+                    //   });
+                    // },
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(bottom: 3),
                       floatingLabelBehavior: FloatingLabelBehavior.always,

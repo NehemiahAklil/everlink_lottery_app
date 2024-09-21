@@ -1,13 +1,6 @@
-import 'package:everlink_lottery_app/presentation/pages/auth/sign_up.dart';
-import 'package:everlink_lottery_app/presentation/pages/bottomnav.dart';
-import 'package:everlink_lottery_app/presentation/pages/home.dart';
-import 'package:everlink_lottery_app/presentation/pages/ticketpage.dart';
-import 'package:everlink_lottery_app/presentation/widgets/background.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class Aboutus extends StatefulWidget {
   const Aboutus({super.key});
