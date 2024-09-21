@@ -35,7 +35,7 @@ class BottomNav extends ConsumerWidget {
             ref.read(pageIndexProvider.notifier).setIndex(index);
             switch (index) {
               case 1:
-                context.pushReplacement('/home');
+                context.pushReplacement('/ticket');
                 break;
               case 2:
                 context.pushReplacement('/info');
@@ -45,7 +45,7 @@ class BottomNav extends ConsumerWidget {
                 break;
               case 0:
               default:
-                context.pushReplacement('/ticket');
+                context.pushReplacement('/home');
                 break;
             }
           },

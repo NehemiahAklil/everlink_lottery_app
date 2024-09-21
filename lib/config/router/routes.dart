@@ -3,13 +3,11 @@ import 'package:everlink_lottery_app/presentation/pages/auth/login.dart';
 import 'package:everlink_lottery_app/presentation/pages/auth/sign_up.dart';
 import 'package:everlink_lottery_app/presentation/pages/edit_profile_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/home.dart';
-import 'package:everlink_lottery_app/presentation/pages/homeold.dart';
-import 'package:everlink_lottery_app/presentation/pages/info.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/end_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/middle_page.dart';
-import 'package:everlink_lottery_app/presentation/pages/profile.dart';
+import 'package:everlink_lottery_app/presentation/pages/payment.dart';
 import 'package:everlink_lottery_app/presentation/pages/shared/bottom_navigation_bar_scaffold.dart';
-import 'package:everlink_lottery_app/presentation/pages/shared/transition_factory.dart';
+import 'package:everlink_lottery_app/presentation/pages/ticketnum.dart';
 import 'package:everlink_lottery_app/presentation/pages/ticketpage.dart';
 import 'package:everlink_lottery_app/presentation/pages/upcoming.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +45,13 @@ GoRouter router = GoRouter(
       path: '/upcoming',
       builder: (context, state) => Upcoming(),
     ),
+
+    GoRoute(
+      path: '/ticketnum',
+    builder: (context, state)=> Ticketnumber()),
+    GoRoute(
+        path: '/payment',
+    builder: (context, state)=>Payment()),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
