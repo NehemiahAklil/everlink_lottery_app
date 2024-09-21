@@ -7,12 +7,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingEndPage extends ConsumerWidget {
   const OnboardingEndPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+     _checkOnboardingStatus(context);
     return Scaffold(
         appBar: OnboardingAppBar(ref),
         body: CustomBackground(
@@ -64,7 +66,9 @@ class OnboardingEndPage extends ConsumerWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async{
+                       SharedPreferences prefs = await SharedPreferences.getInstance();
+                       await prefs.setBool('onboarding_complete', true);
                       context.push('/home');
                       // Navigator.of(context).push(
                       //   MaterialPageRoute(
@@ -91,3 +95,13 @@ class OnboardingEndPage extends ConsumerWidget {
         ));
   }
 }
+
+void _checkOnboardingStatus(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? onboardingComplete = prefs.getBool('onboarding_complete');
+
+    if (onboardingComplete == true) {
+      context.push('/home');
+    }
+  }
+

@@ -5,7 +5,12 @@ import 'package:everlink_lottery_app/presentation/pages/edit_profile_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/home.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/end_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/middle_page.dart';
+
 import 'package:everlink_lottery_app/presentation/pages/payment.dart';
+
+import 'package:everlink_lottery_app/presentation/pages/profile.dart';
+import 'package:everlink_lottery_app/presentation/pages/settings/settings.dart';
+
 import 'package:everlink_lottery_app/presentation/pages/shared/bottom_navigation_bar_scaffold.dart';
 import 'package:everlink_lottery_app/presentation/pages/ticketnum.dart';
 import 'package:everlink_lottery_app/presentation/pages/ticketpage.dart';
@@ -13,6 +18,8 @@ import 'package:everlink_lottery_app/presentation/pages/upcoming.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/start_page.dart';
+
+import '../../presentation/pages/ticketnum.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -46,12 +53,19 @@ GoRouter router = GoRouter(
       builder: (context, state) => Upcoming(),
     ),
 
+
     GoRoute(
       path: '/ticketnum',
     builder: (context, state)=> Ticketnumber()),
     GoRoute(
         path: '/payment',
     builder: (context, state)=>Payment()),
+
+    GoRoute(
+      path: '/ticketnum',
+      builder: (context, state) => Ticketnumber(),
+    ),
+
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
@@ -89,8 +103,8 @@ GoRouter router = GoRouter(
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
-          path: '/profile',
-          builder: (context, state) => EditProfilePage(),
+          path: '/settings',
+          builder: (context, state) => Settings(),
         ),
       ],
     ),

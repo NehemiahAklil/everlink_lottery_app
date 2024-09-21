@@ -32,8 +32,8 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
       child: Drawer(
         backgroundColor: const Color(0xFF9D926E),
         child: Container(
-          width: MediaQuery.of(context).size.width, // Full width of the screen
-          height: MediaQuery.of(context).size.height, // Full height of the screen
+          width: MediaQuery.of(context).size.width, 
+          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(35),
