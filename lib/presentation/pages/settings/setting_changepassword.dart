@@ -4,7 +4,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 
-
 class PasswordVisibilityNotifier extends StateNotifier<Map<String, bool>> {
   PasswordVisibilityNotifier()
       : super({
@@ -118,7 +117,8 @@ class ChangePassword extends ConsumerWidget {
 
     final currentPasswordController =
     ref.watch(currentPasswordControllerProvider);
-    final newPasswordController = ref.watch(newPasswordControllerProvider);
+    final newPasswordController =
+    ref.watch(newPasswordControllerProvider);
     final confirmPasswordController =
     ref.watch(confirmPasswordControllerProvider);
 
@@ -127,9 +127,9 @@ class ChangePassword extends ConsumerWidget {
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(top: 10.0, left: 16, right: 16,bottom: 16),
               child: Form(
-                key: formKey, 
+                key: formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -207,7 +207,6 @@ class ChangePassword extends ConsumerWidget {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),

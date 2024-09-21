@@ -79,10 +79,8 @@
   "invalidpassword" : "Passwords do not match",
   "enternewpassword" : "Please enter a new password",
   "entercurrentpassword" : "Please enter current password",
-  "reset" : "Change"
-
-
-
+  "reset" : "Change",
+  "language" : "Language"
 
 
 }

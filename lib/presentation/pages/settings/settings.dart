@@ -1,15 +1,18 @@
 import 'package:everlink_lottery_app/controller/language_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:everlink_lottery_app/presentation/pages/settings/setting_changepassword.dart';
-import 'package:everlink_lottery_app/presentation/pages/settings/setting_language.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:everlink_lottery_app/presentation/pages/settings/setting_privacy.dart';
 import 'package:everlink_lottery_app/presentation/pages/settings/setting_help.dart';
 import 'package:everlink_lottery_app/presentation/pages/settings/settings_item.dart';
+import '../../../application/user_provider.dart';
 import '../../../main.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../widgets/language_modal_bottom_sheet.dart';
 
 class Settings extends ConsumerWidget {
   const Settings({super.key});
@@ -19,24 +22,16 @@ class Settings extends ConsumerWidget {
     final locale = ref.watch(languageProvider);
     const Color softWhite = Color(0xFFF5F5F5);
 
-    void showLanguageMenu(BuildContext context, WidgetRef ref) {
-      showDialog(
+    void showLanguageModal(BuildContext context, WidgetRef ref) {
+      showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
-          return LanguageSelectionDialog(
-            onLanguageSelected: (String language) async {
-              final languageNotifier = ref.read(languageProvider.notifier);
-              await languageNotifier
-                  .setLocale(language == 'አማርኛ' ? 'am' : 'en');
-              
-              
-            },
-          );
+          return LanguageModalBottomSheet(context, ref);
         },
       );
     }
 
-    void showLogoutDialog(BuildContext context, VoidCallback onConfirm) {
+    void showLogoutDialog(BuildContext context, WidgetRef ref) {
       showDialog(
         context: context,
         builder: (context) {
@@ -50,8 +45,10 @@ class Settings extends ConsumerWidget {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
-                  onConfirm();
+
+                  ref.read(userNotifierProvider.notifier).clear();
+
+                  context.go('/login');
                 },
                 child: Text(AppLocalizations.of(context)!.logout),
               ),
@@ -61,8 +58,6 @@ class Settings extends ConsumerWidget {
       );
     }
 
-    Future<void> performLogout(BuildContext context) async {}
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: CustomBackground(
@@ -71,21 +66,20 @@ class Settings extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 45, left: 7),
+                padding: const EdgeInsets.only(top: 35, left: 7),
                 child: Row(
                   children: [
                     IconButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        context.go('/home');
                       },
-                      icon: const Icon(Ionicons.chevron_back_outline,
-                          color: softWhite),
+                      icon: const Icon(Ionicons.chevron_back_outline, color: softWhite),
                       iconSize: 30,
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 90),
+              const SizedBox(height: 40),
               Text(
                 AppLocalizations.of(context)!.settings,
                 style: const TextStyle(
@@ -108,8 +102,7 @@ class Settings extends ConsumerWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const ChangePassword()),
+                          MaterialPageRoute(builder: (context) => const ChangePassword()),
                         );
                       },
                     ),
@@ -120,7 +113,7 @@ class Settings extends ConsumerWidget {
                       bgcolor: softWhite,
                       iconColor: Colors.black,
                       onTap: () {
-                        showLanguageMenu(context, ref);
+                        showLanguageModal(context, ref);
                       },
                     ),
                     const SizedBox(height: 30),
@@ -145,8 +138,7 @@ class Settings extends ConsumerWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const Privacy()),
+                          MaterialPageRoute(builder: (context) => const Privacy()),
                         );
                       },
                     ),
@@ -157,9 +149,7 @@ class Settings extends ConsumerWidget {
                       bgcolor: softWhite,
                       iconColor: Colors.black87,
                       onTap: () {
-                        showLogoutDialog(context, () {
-                          performLogout(context);
-                        });
+                        showLogoutDialog(context, ref);
                       },
                     ),
                   ],

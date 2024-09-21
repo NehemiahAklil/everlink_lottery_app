@@ -3,17 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:solar_icons/solar_icons.dart';
 
-class Line10 extends StatelessWidget {
-  const Line10({super.key});
+class LineSeparator extends StatelessWidget {
+  const LineSeparator({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 1,
-      color: Colors.grey,
-    );
+    return const Divider(color: Colors.grey, height: 1);
   }
 }
 
@@ -25,15 +22,19 @@ class DrawerPage extends ConsumerStatefulWidget {
 }
 
 class _DrawerPageState extends ConsumerState<DrawerPage> {
+  static const double drawerWidthFactor = 0.8; // 80% of screen width
+  static const Color drawerBackgroundColor = Color(0xFF9D926E);
+  static const Color profileHeaderColor = Color(0xFF151206);
+
   @override
   Widget build(BuildContext context) {
+    double drawerWidth = MediaQuery.of(context).size.width * drawerWidthFactor;
+
     return SizedBox(
-      width: 350,
+      width: drawerWidth,
       child: Drawer(
-        backgroundColor: const Color(0xFF9D926E),
+        backgroundColor: drawerBackgroundColor,
         child: Container(
-          width: MediaQuery.of(context).size.width, 
-          height: MediaQuery.of(context).size.height,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(35),
@@ -42,105 +43,106 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
           ),
           child: Column(
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 50.0),
-                width: 170,
-                height: 169,
-                decoration: const ShapeDecoration(
-                  color: Color(0xFF151206),
-                  shape: OvalBorder(),
-                ),
-                child: const Icon(Icons.person, size: 80, color: Colors.white),
-              ),
+              _buildProfileHeader(),
               const SizedBox(height: 25),
-              Text(AppLocalizations.of(context)!.username,
-                  style: const TextStyle(fontSize: 25)),
-              const SizedBox(height: 40),
-              ListTile(
-                leading: const Icon(Icons.person, color: Colors.black),
-                onTap: () {
-                  context.go('/profile');
-                },
-                title: Text(
-                  AppLocalizations.of(context)!.profile,
-                  style: const TextStyle(fontSize: 20, color: Colors.black),
-                ),
+              _buildDrawerItem(
+                icon: const Icon(SolarIconsBold.user), // Profile icon
+                title: AppLocalizations.of(context)!.profile,
+                onTap: () => context.go('/profile'),
               ),
-              const Line10(),
-              const SizedBox(height: 15),
-              ListTile(
-                leading: const Icon(Icons.home, color: Colors.black),
-                title: Text(
-                  AppLocalizations.of(context)!.home,
-                  style: const TextStyle(fontSize: 20, color: Colors.black),
-                ),
-                onTap: () {
-                  context.go('/home');
-                },
+              const LineSeparator(),
+              _buildDrawerItem(
+                icon: const Icon(SolarIconsBold.home), // Home icon
+                title: AppLocalizations.of(context)!.home,
+                onTap: () => context.go('/home'),
               ),
-              const Line10(),
-              const SizedBox(height: 15),
-              ListTile(
-                leading: const Icon(Icons.airplane_ticket, color: Colors.black),
-                title: Text(
-                  AppLocalizations.of(context)!.tickets,
-                  style: const TextStyle(fontSize: 20, color: Colors.black),
-                ),
+              const LineSeparator(),
+              _buildDrawerItem(
+                icon: const Icon(SolarIconsBold.ticket), // Ticket icon
+                title: AppLocalizations.of(context)!.tickets,
+                onTap: () => context.go('/ticket'),
+              ),
+              const LineSeparator(),
+              _buildDrawerItem(
+                icon: const Icon(SolarIconsBold.infoSquare), // About Us icon
+                title: AppLocalizations.of(context)!.aboutus,
+                onTap: () => context.go('/info'),
+              ),
+              const LineSeparator(),
+              _buildDrawerItem(
+                icon: const Icon(SolarIconsBold.bell), // Announcement icon
+                title: AppLocalizations.of(context)!.announcement,
                 onTap: () {
-                  context.go('/ticket');
+                  // Add functionality here
                 },
               ),
-              const Line10(),
-              const SizedBox(height: 15),
-              ListTile(
-                leading: const Icon(Icons.info, color: Colors.black),
-                title: Text(
-                  AppLocalizations.of(context)!.aboutus,
-                  style: const TextStyle(fontSize: 20, color: Colors.black),
-                ),
-                onTap: () {
-                  context.go('/info');
-                },
+              const LineSeparator(),
+              _buildDrawerItem(
+                icon: const Icon(SolarIconsBold.settings), // Settings icon
+                title: AppLocalizations.of(context)!.settings,
+                onTap: () => context.go('/settings'),
               ),
-              const Line10(),
-              const SizedBox(height: 15),
-              ListTile(
-                leading: const Icon(Icons.announcement, color: Colors.black),
-                title: Text(
-                  AppLocalizations.of(context)!.announcement,
-                  style: const TextStyle(fontSize: 20, color: Colors.black),
-                ),
-                onTap: () {},
+              const LineSeparator(),
+              _buildDrawerItem(
+                icon: const Icon(SolarIconsBold.logout), // Logout icon
+                title: AppLocalizations.of(context)!.logout,
+                onTap: () => showLogoutDialog(context),
               ),
-              const Line10(),
-              const SizedBox(height: 15),
-              ListTile(
-                leading: const Icon(Icons.settings, color: Colors.black),
-                title: Text(
-                  AppLocalizations.of(context)!.settings,
-                  style: const TextStyle(fontSize: 20, color: Colors.black),
-                ),
-                onTap: () {},
-              ),
-              const Line10(),
-              const SizedBox(height: 15),
-              ListTile(
-                leading: const Icon(Icons.logout, color: Colors.black),
-                title: Text(
-                  AppLocalizations.of(context)!.logout,
-                  style: const TextStyle(fontSize: 20, color: Colors.black),
-                ),
-                onTap: () {
-                  ref.read(userNotifierProvider.notifier).clear();
-                  context.go("/login");
-                },
-              ),
-              const Line10(),
-              const SizedBox(height: 15),
+              const LineSeparator(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildProfileHeader() {
+    return Container(
+      margin: const EdgeInsets.only(top: 50.0),
+      width: 170,
+      height: 169,
+      decoration: const ShapeDecoration(
+        color: profileHeaderColor,
+        shape: OvalBorder(),
+      ),
+      child: const Icon(SolarIconsBold.user, size: 80, color: Colors.white), // Profile icon
+    );
+  }
+
+  Widget _buildDrawerItem({
+    required Widget icon,
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return ListTile(
+      leading: icon,
+      title: Text(title, style: const TextStyle(fontSize: 20, color: Colors.black)),
+      onTap: onTap,
+    );
+  }
+
+  void showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(AppLocalizations.of(context)!.logout),
+          content: Text(AppLocalizations.of(context)!.logout_text),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(AppLocalizations.of(context)!.cancel),
+            ),
+            TextButton(
+              onPressed: () {
+                ref.read(userNotifierProvider.notifier).clear();
+                context.go("/login");
+              },
+              child: Text(AppLocalizations.of(context)!.logout),
+            ),
+          ],
+        );
+      },
     );
   }
 }

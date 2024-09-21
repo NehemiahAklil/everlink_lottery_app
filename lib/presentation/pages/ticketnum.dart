@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
       home: Ticketnumber(),
     );
   }
+
+  static void setLocale(BuildContext context, Locale read) {}
 }
 
 class Ticketnumber extends StatefulWidget {

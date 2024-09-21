@@ -33,7 +33,7 @@ class Settingsitem extends StatelessWidget {
               shape: BoxShape.circle,
               color: bgcolor,
             ),
-            child: Icon(icon),
+            child: Icon(icon, color: iconColor),
           ),
           const SizedBox(width: 20),
           Text(
