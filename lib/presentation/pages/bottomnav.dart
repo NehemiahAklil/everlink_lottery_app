@@ -41,7 +41,7 @@ class BottomNav extends ConsumerWidget {
                 context.pushReplacement('/info');
                 break;
               case 3:
-                context.pushReplacement('/profile');
+                context.pushReplacement('/settings');
                 break;
               case 0:
               default:

@@ -26,6 +26,8 @@ dependencies:
   riverpod_annotation: ^2.3.5
   salomon_bottom_bar: ^3.3.2
   solar_icons: ^0.0.5
+  shared_preferences: ^2.3.2
+  ionicons: ^0.2.2
 
 dev_dependencies:
   flutter_test:

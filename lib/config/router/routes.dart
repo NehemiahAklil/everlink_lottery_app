@@ -8,6 +8,7 @@ import 'package:everlink_lottery_app/presentation/pages/info.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/end_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/middle_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/profile.dart';
+import 'package:everlink_lottery_app/presentation/pages/settings/settings.dart';
 import 'package:everlink_lottery_app/presentation/pages/shared/bottom_navigation_bar_scaffold.dart';
 import 'package:everlink_lottery_app/presentation/pages/shared/transition_factory.dart';
 import 'package:everlink_lottery_app/presentation/pages/ticketpage.dart';
@@ -15,6 +16,8 @@ import 'package:everlink_lottery_app/presentation/pages/upcoming.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/start_page.dart';
+
+import '../../presentation/pages/ticketnum.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -46,6 +49,10 @@ GoRouter router = GoRouter(
       // parentNavigatorKey: _shellNavigatorKey,
       path: '/upcoming',
       builder: (context, state) => Upcoming(),
+    ),
+    GoRoute(
+      path: '/ticketnum',
+      builder: (context, state) => Ticketnumber(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
@@ -84,8 +91,8 @@ GoRouter router = GoRouter(
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
-          path: '/profile',
-          builder: (context, state) => EditProfilePage(),
+          path: '/settings',
+          builder: (context, state) => Settings(),
         ),
       ],
     ),
