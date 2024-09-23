@@ -3,6 +3,7 @@ import 'package:everlink_lottery_app/presentation/pages/auth/login.dart';
 import 'package:everlink_lottery_app/presentation/pages/auth/sign_up.dart';
 import 'package:everlink_lottery_app/presentation/pages/edit_profile_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/home.dart';
+import 'package:everlink_lottery_app/presentation/pages/homepage.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/end_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/middle_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/payment.dart';
@@ -97,3 +98,13 @@ GoRouter router = GoRouter(
     ),
   ],
 );
+
+// Set the initial route to home
+void main() {
+  runApp(
+    MaterialApp.router(
+      routerDelegate: router.routerDelegate,
+      routeInformationParser: router.routeInformationParser,
+    ),
+  );
+}

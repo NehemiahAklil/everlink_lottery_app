@@ -31,7 +31,7 @@ class _TicketnumberState extends State<Ticketnumber> {
   FocusNode searchFocusNode = FocusNode();
 
   // Simulate a logged-in status
-  bool isLoggedIn = true; // Set this to true for testing
+  bool isLoggedIn = true;
 
   @override
   void initState() {
@@ -192,9 +192,9 @@ class _TicketnumberState extends State<Ticketnumber> {
                         );
                       } else {
                         if (isLoggedIn) {
-                          context.go('/payment'); // Navigate to payment page
+                          context.go('/payment');
                         } else {
-                          context.go('/login'); // Navigate to login page
+                          context.go('/login');
                         }
                       }
                     },

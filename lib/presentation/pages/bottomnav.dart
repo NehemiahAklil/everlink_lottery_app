@@ -39,13 +39,13 @@ class BottomNav extends ConsumerWidget {
         currentIndex: currentIndex,
         onTap: (index) {
           if (index == currentIndex) {
-            // If tapped on the same tab, don't navigate again
+
             return;
           }
 
           ref.read(pageIndexProvider.notifier).setIndex(index);
 
-          // Handle navigation based on the selected tab
+
           switch (index) {
             case 1:
               context.go('/ticket');
