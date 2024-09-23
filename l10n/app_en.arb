@@ -80,7 +80,15 @@
   "enternewpassword" : "Please enter a new password",
   "entercurrentpassword" : "Please enter current password",
   "reset" : "Change",
-  "language" : "Language"
-
-
+  "language" : "Language",
+  "transformyourhome" : "Transform your home",
+  "withourstunning" : "with our stunning",
+  "furniture" : "furniture",
+  "phonenumber" : "Phone number",
+  "address" : "Address",
+  "editprofile" : "Edit profile",
+  "save" : "Save",
+  "enter" : "Enter",
+  "profilesaved" : "Profile saved",
+  "isrequired" : "is required"
 }

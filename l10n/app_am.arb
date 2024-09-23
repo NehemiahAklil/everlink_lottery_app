@@ -79,7 +79,17 @@
   "entercurrentpassword" : "እባክህ የአሁኑን የይለፍ ቃልህን አስገባ",
   "help_text" :"ለማገዝ እዚህ መጥተናል! ማንኛውም አይነት ጥያቄ ካለዎት ወይም በ[የእርስዎ መተግበሪያ ስም] ላይ እገዛ ከፈለጉ፣ የእኛ ቁርጠኛ የድጋፍ ቡድን እርስዎን ለመርዳት ዝግጁ ነው።",
   "reset" : "ቀይር",
-  "language" : "ቋንቋ"
+  "language" : "ቋንቋ",
+  "transformyourhome" : "ቤትዎን ይለውጡ",
+  "withourstunning" : "ከኛ አስደናቂ ጋር",
+  "furniture" : "የቤት እቃዎች",
+  "phonenumber" : "ስልክ ቁጥር",
+  "address" : "አድራሻ",
+  "editprofile" : "መገለጫ አርትዕ",
+  "save" : "ማስቀመጥ",
+  "enter" : "አስገባ",
+  "profilesaved" : "መገለጫ ተቀምጧል",
+  "isrequired" : "የሚፈለግ ነው።"
 
 
 
