@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Payment extends StatefulWidget {
   const Payment({super.key});
@@ -26,6 +27,7 @@ class _PaymentState extends State<Payment> {
   File? _image;
   final ImagePicker _picker = ImagePicker();
   final FirebaseStorage _storage = FirebaseStorage.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance; // Firestore instance
 
   @override
   Widget build(BuildContext context) {
@@ -214,7 +216,7 @@ class _PaymentState extends State<Payment> {
 
   Widget _buildProceedButton() {
     return ElevatedButton(
-      onPressed: () {
+      onPressed: () async {
         if (isTelebirrSelected || isMpesaSelected || isBankSelected) {
           if (isTelebirrSelected && !_userPhoneNumber.startsWith('09')) {
             _showError('Telebirr numbers must start with 09');
@@ -224,6 +226,9 @@ class _PaymentState extends State<Payment> {
             _showError('Mpesa numbers must start with 07');
             return;
           }
+
+          // Upload selected ticket number to Firebase (remove reference to selectedTicketNumber)
+          // await _uploadTicketNumberToFirebase(widget.selectedTicketNumber);
 
           print('Selected payment methods:');
           if (isTelebirrSelected) {
