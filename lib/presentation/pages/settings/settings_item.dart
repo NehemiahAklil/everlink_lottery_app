@@ -47,13 +47,13 @@ class Settingsitem extends StatelessWidget {
           const Spacer(flex: 30),
           value != null
               ? Text(
-                  value!,
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.grey,
-                  ),
-                )
+            value!,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w300,
+              color: Colors.grey,
+            ),
+          )
               : const SizedBox(width: 18),
           ForwardButton(onTap: onTap),
         ],
