@@ -59,6 +59,10 @@ GoRouter router = GoRouter(
       path: '/settings',
       builder: (context, state) => Settings(),
     ),
+    GoRoute(
+      path: '/profile',
+      builder: (context, state) => Profile(),
+    ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
