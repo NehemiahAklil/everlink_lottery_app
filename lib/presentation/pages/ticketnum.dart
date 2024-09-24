@@ -144,33 +144,36 @@ class _TicketNumberState extends ConsumerState<TicketNumber> {
                           keyboardType: TextInputType.number,
                         ),
                         const SizedBox(height: 25),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: selectedNumbers
-                              .map((num) => Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 4.0),
-                                    child: Container(
-                                      width: 75,
-                                      height: 65,
-                                      child: Chip(
-                                        label: Text(
-                                          '$num',
-                                          style: const TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20),
-                                        ),
-                                        backgroundColor: softWhite,
-                                        shape: RoundedRectangleBorder(
-                                          side: BorderSide(
-                                              color: Color(0xFFD7B58D)),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: selectedNumbers
+                                .map((num) => Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4.0),
+                                      child: Container(
+                                        width: 75,
+                                        height: 65,
+                                        child: Chip(
+                                          label: Text(
+                                            '$num',
+                                            style: const TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 20),
+                                          ),
+                                          backgroundColor: softWhite,
+                                          shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                                color: Color(0xFFD7B58D)),
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ))
-                              .toList(),
+                                    ))
+                                .toList(),
+                          ),
                         ),
                         Expanded(
                           child: GridView.builder(
