@@ -1,193 +1,219 @@
-import 'package:everlink_lottery_app/presentation/pages/bottomnav.dart';
-import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class EditProfilePage extends StatefulWidget {
+import '../widgets/background.dart';
+
+class Profile extends StatefulWidget {
   @override
-  _EditProfilePageState createState() => _EditProfilePageState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _EditProfilePageState extends State<EditProfilePage> {
-  String? selectedOption;
-  bool isUsernameValid = true; // Track validity of the username
+class _ProfileState extends State<Profile> {
+  final ImagePicker _picker = ImagePicker();
+  String? _imagePath; // Variable to hold the image path
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isExpanded = false;
+
+  // Function to open the gallery
+  Future<void> _openGallery() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _imagePath = image.path;
+      });
+    }
+  }
+
+  Widget _buildProfilePicture() {
+    return Center(
+      child: Container(
+        height: 150,
+        width: 150,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          shape: BoxShape.circle,
+          border: Border.all(color: Color(0xFFD7B58D)),
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+
+            _imagePath != null
+                ? ClipOval(
+              child: Image.file(
+                File(_imagePath!),
+                width: 150,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
+            )
+                : Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+
+              ),
+              child: Icon(
+                Icons.person,
+                size: 70,
+                color: Colors.white,
+              ),
+            ),
+            Positioned(
+              bottom: -10,
+              right: -5,
+              child: IconButton(
+                icon: Icon(
+                  Icons.camera_alt,
+                  color: Color(0xFFD7B58D),
+                  size: 40,
+                ),
+                onPressed: _openGallery,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserInfo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("${AppLocalizations.of(context)!.username}: ${usernameController.text}",style: TextStyle(fontSize: 18)),
+        SizedBox(height: 12),
+        Text("${AppLocalizations.of(context)!.email}: ${usernameController.text}",style: TextStyle(fontSize: 18)),
+        SizedBox(height: 12),
+        Text("${AppLocalizations.of(context)!.phonenumber}: ${usernameController.text}",style: TextStyle(fontSize: 18)),
+        SizedBox(height: 12),
+        Text("${AppLocalizations.of(context)!.address}: ${usernameController.text}",style: TextStyle(fontSize: 18)),
+      ],
+    );
+  }
+
+  Widget _buildExpandableButton() {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isExpanded = !isExpanded;
+        });
+      },
+      child: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Color(0xFFD7B58D)),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              AppLocalizations.of(context)!.editprofile,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            Icon(
+              isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildExpandableForm() {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          _buildTextField(AppLocalizations.of(context)!.username, usernameController),
+          SizedBox(height: 12),
+          _buildTextField(AppLocalizations.of(context)!.email, emailController),
+          SizedBox(height: 12),
+          _buildTextField(AppLocalizations.of(context)!.phonenumber, phoneController),
+          SizedBox(height: 12),
+          _buildTextField(AppLocalizations.of(context)!.address, addressController),
+          SizedBox(height: 12),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              side: const BorderSide(color: Color(0xFFD7B58D)),
+            ),
+            onPressed: _saveProfile,
+            child: Text(AppLocalizations.of(context)!.save),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTextField(String hint, TextEditingController controller) {
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(
+        hintText: "${AppLocalizations.of(context)!.address} $hint",
+        contentPadding: EdgeInsets.only(bottom: 2),
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return " $hint ${AppLocalizations.of(context)!.isrequired} ";
+        }
+        return null;
+      },
+    );
+  }
+
+  void _saveProfile() {
+    if (_formKey.currentState!.validate()) {
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context)!.profilesaved)),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: MediaQuery.of(context).size.height,
-        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
-        child: ListView(
-          children: [
-            SizedBox(height: 15),
-            Center(
-              child: Container(
-                width: 450,
-                height: 125,
-                decoration: BoxDecoration(
-                  color: Colors.orange[100],
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 2,
-                  ),
-                ),
-                child: Stack(
-                  alignment: Alignment.center,
+    return Scaffold(
+      body: CustomBackground(
+        child: Center(
+          child: Container(
+            padding: EdgeInsets.only(top: 15, left: 15),
+            width: 450,
+            child: ListView(
+              children: [
+                Row(
                   children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(width: 4, color: Colors.black),
-                      ),
-                    ),
-                    Container(
-                      width: 120,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.grey[300],
-                      ),
-                      child: Icon(
-                        Icons.person,
-                        size: 70,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 2,
-                      right: 64,
-                      child: Container(
-                        width: 30,
-                        height: 30,
-                        child: Icon(
-                          Icons.camera_alt,
-                          color: Colors.white,
-                          size: 50,
-                        ),
-                      ),
+                    IconButton(
+                      onPressed: () {
+                        context.go('/home');
+                      },
+                      icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
+                      iconSize: 30,
                     ),
                   ],
                 ),
-              ),
-            ),
-            SizedBox(height: 15),
-            TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(bottom: 3),
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                hintText: "User Name",
-                hintStyle: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(bottom: 3),
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                hintText: "Example@gmail.com",
-                hintStyle: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            SizedBox(height: 15),
-            TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(bottom: 3),
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                hintText: "0999999999",
-                hintStyle: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            SizedBox(height: 15),
-            TextField(
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(bottom: 3),
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                hintText: "Address",
-                hintStyle: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            SizedBox(height: 5),
-            // Row for "Edit Profile" label and dropdown icon
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Edit Profile",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                DropdownButton<String>(
-                  value: selectedOption,
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      selectedOption = newValue;
-                    });
-                  },
-                  items: <String>['Option 1', 'Option 2', 'Option 3']
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                  underline: SizedBox(), // Remove underline
-                  icon: Icon(Icons.arrow_drop_down), // Dropdown icon
-                ),
+                SizedBox(height: 40),
+                _buildProfilePicture(),
+                SizedBox(height: 40),
+                _buildUserInfo(),
+                SizedBox(height: 20),
+                _buildExpandableButton(),
+                if (isExpanded) _buildExpandableForm(),
               ],
             ),
-            SizedBox(height: 15),
-            // Row for User Name and Validity Icon
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Expanded(
-                  child: TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        // Simple validation: check if the username is not empty
-                        isUsernameValid = value.isNotEmpty;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(bottom: 3),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: "User Name",
-                      hintStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(width: 8), // Spacing between TextField and icon
-                Icon(
-                  isUsernameValid ? Icons.check_circle : Icons.cancel,
-                  color: isUsernameValid ? Colors.green : Colors.red,
-                  size: 24,
-                ),
-              ],
-            ),
-            SizedBox(height: 5),
-          ],
+          ),
         ),
       ),
     );

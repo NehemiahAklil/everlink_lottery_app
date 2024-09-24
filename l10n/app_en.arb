@@ -65,6 +65,8 @@
   "amharic": "Amharic",
   "help_text": "We’re here to help! If you have any questions or need assistance with [Your App Name], our dedicated support team is ready to assist you.",
   "help_text1": "Whether you’re having trouble with your account, need help with purchasing tickets, or have any other inquiries, we are just a message away.",
+  "contactus": "Contact us",
+  "mexico": "Mexico, Addis Ababa ",
   "privacy_text1": "You have full control over your personal information. You can update your details, manage your preferences, or delete your account at any time through the app settings. If you have any questions or need assistance, our support team is always here to help.",
   "privacy_text": "At [App Name], we prioritize your privacy and are committed to protecting your personal information. We collect only the necessary data to enhance your experience, such as contact details and transaction history. Rest assured, your data is stored securely and is never shared with third parties without your consent.",
   "logout_text": "Are you sure you want to logout?",
@@ -74,5 +76,16 @@
   "invalidpassword": "Passwords do not match",
   "enternewpassword": "Please enter a new password",
   "entercurrentpassword": "Please enter current password",
-  "reset": "Change"
+  "reset": "Change",
+  "language": "Language",
+  "transformyourhome": "Transform your home",
+  "withourstunning": "with our stunning",
+  "furniture": "furniture",
+  "phonenumber": "Phone number",
+  "address": "Address",
+  "editprofile": "Edit profile",
+  "save": "Save",
+  "enter": "Enter",
+  "profilesaved": "Profile saved",
+  "isrequired": "is required"
 }

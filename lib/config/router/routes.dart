@@ -3,9 +3,10 @@ import 'package:everlink_lottery_app/presentation/pages/auth/login.dart';
 import 'package:everlink_lottery_app/presentation/pages/auth/sign_up.dart';
 import 'package:everlink_lottery_app/presentation/pages/edit_profile_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/home.dart';
+import 'package:everlink_lottery_app/presentation/pages/homepage.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/end_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/middle_page.dart';
-import 'package:everlink_lottery_app/presentation/pages/payment.dart';
+import 'package:everlink_lottery_app/presentation/pages/check_out_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/profile.dart';
 import 'package:everlink_lottery_app/presentation/pages/settings/settings.dart';
 import 'package:everlink_lottery_app/presentation/pages/shared/bottom_navigation_bar_scaffold.dart';
@@ -50,15 +51,29 @@ GoRouter router = GoRouter(
         path: '/ticketnum',
         builder: (context, state) {
           final id = state.uri.queryParameters["id"];
-          return TicketNumber(lotteryId: id ?? "");
+          final participants = state.uri.queryParameters["participants"];
+          return TicketNumber(
+            lotteryId: id ?? "",
+            lotteryLimit: int.tryParse(participants!) ?? 0,
+          );
         }),
     GoRoute(
-      path: '/payment',
-      builder: (context, state) => Payment(),
-    ),
+        path: '/payment',
+        builder: (context, state) {
+          final lotteryId = state.uri.queryParameters["lotteryId"];
+          final selectedNumber = state.uri.queryParameters["selectedNumber"];
+          return CheckOutPage(
+            lotteryId: lotteryId,
+            selectedNumber: int.tryParse(selectedNumber!),
+          );
+        }),
     GoRoute(
       path: '/settings',
       builder: (context, state) => Settings(),
+    ),
+    GoRoute(
+      path: '/profile',
+      builder: (context, state) => Profile(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,

@@ -31,25 +31,34 @@ class BottomNav extends ConsumerWidget {
       ),
     ];
 
+    final currentIndex = ref.watch(pageIndexProvider);
+
     return ClipRRect(
       child: SalomonBottomBar(
         items: _items,
-        currentIndex: ref.watch(pageIndexProvider),
+        currentIndex: currentIndex,
         onTap: (index) {
+          if (index == currentIndex) {
+
+            return;
+          }
+
           ref.read(pageIndexProvider.notifier).setIndex(index);
+
+
           switch (index) {
             case 1:
-              context.pushReplacement('/ticket');
+              context.go('/ticket');
               break;
             case 2:
-              context.pushReplacement('/info');
+              context.go('/info');
               break;
             case 3:
-              context.pushReplacement('/settings');
+              context.go('/settings');
               break;
             case 0:
             default:
-              context.pushReplacement('/home');
+              context.go('/home');
               break;
           }
         },

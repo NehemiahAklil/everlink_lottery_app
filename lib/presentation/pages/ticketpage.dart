@@ -224,9 +224,10 @@ class FurnitureCard extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ElevatedButton(
                 onPressed: () {
-                  context.push(Uri(
-                      path: '/ticketnum',
-                      queryParameters: {'id': item.lotteryId}).toString());
+                  context.push(Uri(path: '/ticketnum', queryParameters: {
+                    'id': item.lotteryId,
+                    "participants": item.participants.toString()
+                  }).toString());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,

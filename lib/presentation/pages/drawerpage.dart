@@ -46,31 +46,31 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
               _buildProfileHeader(),
               const SizedBox(height: 25),
               _buildDrawerItem(
-                icon: const Icon(SolarIconsBold.user), // Profile icon
+                icon: const Icon(SolarIconsBold.user),
                 title: AppLocalizations.of(context)!.profile,
                 onTap: () => context.go('/profile'),
               ),
               const LineSeparator(),
               _buildDrawerItem(
-                icon: const Icon(SolarIconsBold.home), // Home icon
+                icon: const Icon(SolarIconsBold.home),
                 title: AppLocalizations.of(context)!.home,
                 onTap: () => context.go('/home'),
               ),
               const LineSeparator(),
               _buildDrawerItem(
-                icon: const Icon(SolarIconsBold.ticket), // Ticket icon
+                icon: const Icon(SolarIconsBold.ticket),
                 title: AppLocalizations.of(context)!.tickets,
                 onTap: () => context.go('/ticket'),
               ),
               const LineSeparator(),
               _buildDrawerItem(
-                icon: const Icon(SolarIconsBold.infoSquare), // About Us icon
+                icon: const Icon(SolarIconsBold.infoSquare),
                 title: AppLocalizations.of(context)!.aboutus,
                 onTap: () => context.go('/info'),
               ),
               const LineSeparator(),
               _buildDrawerItem(
-                icon: const Icon(SolarIconsBold.bell), // Announcement icon
+                icon: const Icon(SolarIconsBold.bell),
                 title: AppLocalizations.of(context)!.announcement,
                 onTap: () {
                   // Add functionality here
@@ -78,13 +78,13 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
               ),
               const LineSeparator(),
               _buildDrawerItem(
-                icon: const Icon(SolarIconsBold.settings), // Settings icon
+                icon: const Icon(SolarIconsBold.settings),
                 title: AppLocalizations.of(context)!.settings,
                 onTap: () => context.go('/settings'),
               ),
               const LineSeparator(),
               _buildDrawerItem(
-                icon: const Icon(SolarIconsBold.logout), // Logout icon
+                icon: const Icon(SolarIconsBold.logout),
                 title: AppLocalizations.of(context)!.logout,
                 onTap: () => showLogoutDialog(context),
               ),
@@ -105,7 +105,7 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
         color: profileHeaderColor,
         shape: OvalBorder(),
       ),
-      child: const Icon(SolarIconsBold.user, size: 80, color: Colors.white), // Profile icon
+      child: const Icon(SolarIconsBold.user, size: 80, color: Colors.white),
     );
   }
 
