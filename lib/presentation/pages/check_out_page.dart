@@ -179,14 +179,13 @@ class _CheckOutPageState extends State<CheckOutPage> {
   Widget _buildPhoneInput() {
     return TextField(
       style: const TextStyle(color: Colors.white),
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'Enter your phone number',
-        hintStyle: const TextStyle(color: Colors.white70),
+        hintStyle: TextStyle(color: Colors.white70),
         filled: true,
         fillColor: Colors.black54,
-        border: const OutlineInputBorder(),
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+        border: OutlineInputBorder(),
+        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       ),
       onChanged: (value) {
         setState(() {
@@ -227,7 +226,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
         });
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xD99D926E),
+        backgroundColor: const Color(0xD99D926E),
         side: const BorderSide(color: Color(0xFFD7B58D)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
@@ -271,7 +270,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
       },
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-        backgroundColor: Color(0xD99D926E),
+        backgroundColor: const Color(0xD99D926E),
         side: const BorderSide(color: Color(0xFFD7B58D)),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),

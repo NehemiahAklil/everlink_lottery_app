@@ -26,7 +26,7 @@ class HomeScreen extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.notifications,
                       color: Colors.black,
                       size: 36.0,
@@ -35,11 +35,11 @@ class HomeScreen extends ConsumerWidget {
                       // Handle notification icon press
                     },
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 15,
                   ),
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.menu,
                       color: Colors.black,
                       size: 36.0,
@@ -55,7 +55,7 @@ class HomeScreen extends ConsumerWidget {
               ),
             ),
           ),
-          Text("Welcome ${emailName}"),
+          Text("Welcome $emailName"),
           Row(
             mainAxisAlignment:
                 MainAxisAlignment.center, // Center the buttons horizontally
@@ -77,7 +77,7 @@ class HomeScreen extends ConsumerWidget {
                   style: TextStyle(color: Colors.black),
                 ),
               ),
-              SizedBox(width: 20), // Add some space between the buttons
+              const SizedBox(width: 20), // Add some space between the buttons
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(200, 50),
@@ -104,14 +104,14 @@ class HomeScreen extends ConsumerWidget {
           SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 45,
                 ),
-                Text(
+                const Text(
                   'Sofa',
                   style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Stack(
@@ -122,7 +122,8 @@ class HomeScreen extends ConsumerWidget {
                         width: MediaQuery.of(context).size.width * 0.9,
                         height: MediaQuery.of(context).size.height * 0.3,
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/images/sofa_cream_min.png'),
+                        image: const AssetImage(
+                            'assets/images/sofa_cream_min.png'),
                       ),
                     ),
                     Positioned(
@@ -133,10 +134,10 @@ class HomeScreen extends ConsumerWidget {
                         width: MediaQuery.of(context).size.width * 0.8,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color:
-                              Color.fromARGB(0, 160, 151, 151).withOpacity(0.5),
+                          color: const Color.fromARGB(0, 160, 151, 151)
+                              .withOpacity(0.5),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('play now'),
@@ -148,18 +149,18 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                Text('Dining Table',
+                const Text('Dining Table',
                     style:
                         TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Stack(
                   children: [
-                    Image(
+                    const Image(
                       image: AssetImage('assets/images/diningTable.png'),
                     ),
                     Positioned(
@@ -167,15 +168,16 @@ class HomeScreen extends ConsumerWidget {
                       left: 10,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          fixedSize: Size(300, 50),
+                          fixedSize: const Size(300, 50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
                           ),
                           backgroundColor:
-                              Color.fromARGB(0, 160, 151, 151).withOpacity(0.5),
+                              const Color.fromARGB(0, 160, 151, 151)
+                                  .withOpacity(0.5),
                         ),
                         onPressed: () {},
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('play now'),
@@ -187,18 +189,18 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                Text('Kitchen Cabinate',
+                const Text('Kitchen Cabinate',
                     style:
                         TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Stack(
                   children: [
-                    Image(
+                    const Image(
                       image: AssetImage('assets/images/KitchenCabinet.png'),
                     ),
                     Positioned(
@@ -206,15 +208,16 @@ class HomeScreen extends ConsumerWidget {
                       left: 10,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          fixedSize: Size(300, 50),
+                          fixedSize: const Size(300, 50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
                           ),
                           backgroundColor:
-                              Color.fromARGB(0, 160, 151, 151).withOpacity(0.5),
+                              const Color.fromARGB(0, 160, 151, 151)
+                                  .withOpacity(0.5),
                         ),
                         onPressed: () {},
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('play now'),
@@ -226,18 +229,18 @@ class HomeScreen extends ConsumerWidget {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                Text('Tv Stand',
+                const Text('Tv Stand',
                     style:
                         TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Stack(
                   children: [
-                    Image(
+                    const Image(
                       image: AssetImage('assets/images/TvStand.png'),
                     ),
                     Positioned(
@@ -245,15 +248,16 @@ class HomeScreen extends ConsumerWidget {
                       left: 10,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          fixedSize: Size(300, 50),
+                          fixedSize: const Size(300, 50),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
                           ),
                           backgroundColor:
-                              Color.fromARGB(0, 160, 151, 151).withOpacity(0.5),
+                              const Color.fromARGB(0, 160, 151, 151)
+                                  .withOpacity(0.5),
                         ),
                         onPressed: () {},
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text('play now'),

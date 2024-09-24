@@ -47,8 +47,7 @@ class _TicketPageState extends State<TicketPage> {
           _buildHeader(),
           const SizedBox(height: 20),
           ...furnitureItems
-              .map((item) => FurnitureCard(item: item, softWhite: softWhite))
-              .toList(),
+              .map((item) => FurnitureCard(item: item, softWhite: softWhite)),
         ],
       ),
     );

@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:everlink_lottery_app/domain/entity/entry_ticket.dart';
 import 'package:everlink_lottery_app/domain/entity/payment.dart';
 import 'package:everlink_lottery_app/locator.dart';
-import 'package:everlink_lottery_app/utils/helper.dart';
 import 'package:everlink_lottery_app/utils/nanoid_generator.dart';
 import 'package:flutter/foundation.dart';
 

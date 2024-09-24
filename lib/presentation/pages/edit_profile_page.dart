@@ -7,6 +7,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../widgets/background.dart';
 
 class Profile extends StatefulWidget {
+  const Profile({super.key});
+
   @override
   _ProfileState createState() => _ProfileState();
 }
@@ -40,39 +42,37 @@ class _ProfileState extends State<Profile> {
         decoration: BoxDecoration(
           color: Colors.transparent,
           shape: BoxShape.circle,
-          border: Border.all(color: Color(0xFFD7B58D)),
+          border: Border.all(color: const Color(0xFFD7B58D)),
         ),
         child: Stack(
           alignment: Alignment.center,
           children: [
-
             _imagePath != null
                 ? ClipOval(
-              child: Image.file(
-                File(_imagePath!),
-                width: 150,
-                height: 150,
-                fit: BoxFit.cover,
-              ),
-            )
+                    child: Image.file(
+                      File(_imagePath!),
+                      width: 150,
+                      height: 150,
+                      fit: BoxFit.cover,
+                    ),
+                  )
                 : Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-
-              ),
-              child: Icon(
-                Icons.person,
-                size: 70,
-                color: Colors.white,
-              ),
-            ),
+                    width: 150,
+                    height: 150,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.person,
+                      size: 70,
+                      color: Colors.white,
+                    ),
+                  ),
             Positioned(
               bottom: -10,
               right: -5,
               child: IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.camera_alt,
                   color: Color(0xFFD7B58D),
                   size: 40,
@@ -90,13 +90,21 @@ class _ProfileState extends State<Profile> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("${AppLocalizations.of(context)!.username}: ${usernameController.text}",style: TextStyle(fontSize: 18)),
-        SizedBox(height: 12),
-        Text("${AppLocalizations.of(context)!.email}: ${usernameController.text}",style: TextStyle(fontSize: 18)),
-        SizedBox(height: 12),
-        Text("${AppLocalizations.of(context)!.phonenumber}: ${usernameController.text}",style: TextStyle(fontSize: 18)),
-        SizedBox(height: 12),
-        Text("${AppLocalizations.of(context)!.address}: ${usernameController.text}",style: TextStyle(fontSize: 18)),
+        Text(
+            "${AppLocalizations.of(context)!.username}: ${usernameController.text}",
+            style: const TextStyle(fontSize: 18)),
+        const SizedBox(height: 12),
+        Text(
+            "${AppLocalizations.of(context)!.email}: ${usernameController.text}",
+            style: const TextStyle(fontSize: 18)),
+        const SizedBox(height: 12),
+        Text(
+            "${AppLocalizations.of(context)!.phonenumber}: ${usernameController.text}",
+            style: const TextStyle(fontSize: 18)),
+        const SizedBox(height: 12),
+        Text(
+            "${AppLocalizations.of(context)!.address}: ${usernameController.text}",
+            style: const TextStyle(fontSize: 18)),
       ],
     );
   }
@@ -109,18 +117,18 @@ class _ProfileState extends State<Profile> {
         });
       },
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Color(0xFFD7B58D)),
+          border: Border.all(color: const Color(0xFFD7B58D)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               AppLocalizations.of(context)!.editprofile,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
             Icon(
               isExpanded ? Icons.arrow_drop_up : Icons.arrow_drop_down,
@@ -136,14 +144,17 @@ class _ProfileState extends State<Profile> {
       key: _formKey,
       child: Column(
         children: [
-          _buildTextField(AppLocalizations.of(context)!.username, usernameController),
-          SizedBox(height: 12),
+          _buildTextField(
+              AppLocalizations.of(context)!.username, usernameController),
+          const SizedBox(height: 12),
           _buildTextField(AppLocalizations.of(context)!.email, emailController),
-          SizedBox(height: 12),
-          _buildTextField(AppLocalizations.of(context)!.phonenumber, phoneController),
-          SizedBox(height: 12),
-          _buildTextField(AppLocalizations.of(context)!.address, addressController),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
+          _buildTextField(
+              AppLocalizations.of(context)!.phonenumber, phoneController),
+          const SizedBox(height: 12),
+          _buildTextField(
+              AppLocalizations.of(context)!.address, addressController),
+          const SizedBox(height: 12),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
@@ -162,7 +173,7 @@ class _ProfileState extends State<Profile> {
       controller: controller,
       decoration: InputDecoration(
         hintText: "${AppLocalizations.of(context)!.address} $hint",
-        contentPadding: EdgeInsets.only(bottom: 2),
+        contentPadding: const EdgeInsets.only(bottom: 2),
         floatingLabelBehavior: FloatingLabelBehavior.always,
       ),
       validator: (value) {
@@ -176,7 +187,6 @@ class _ProfileState extends State<Profile> {
 
   void _saveProfile() {
     if (_formKey.currentState!.validate()) {
-
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(AppLocalizations.of(context)!.profilesaved)),
       );
@@ -189,7 +199,7 @@ class _ProfileState extends State<Profile> {
       body: CustomBackground(
         child: Center(
           child: Container(
-            padding: EdgeInsets.only(top: 15, left: 15),
+            padding: const EdgeInsets.only(top: 15, left: 15),
             width: 450,
             child: ListView(
               children: [
@@ -199,16 +209,17 @@ class _ProfileState extends State<Profile> {
                       onPressed: () {
                         context.go('/home');
                       },
-                      icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
+                      icon: const Icon(Icons.arrow_back_ios_sharp,
+                          color: Colors.white),
                       iconSize: 30,
                     ),
                   ],
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 _buildProfilePicture(),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 _buildUserInfo(),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 _buildExpandableButton(),
                 if (isExpanded) _buildExpandableForm(),
               ],

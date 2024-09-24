@@ -25,27 +25,27 @@ GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => OnboardingPage(),
+      builder: (context, state) => const OnboardingPage(),
     ),
     GoRoute(
       path: '/onboarding_middle',
-      builder: (context, state) => OnboardingMiddlePage(),
+      builder: (context, state) => const OnboardingMiddlePage(),
     ),
     GoRoute(
       path: '/onboarding_end',
-      builder: (context, state) => OnboardingEndPage(),
+      builder: (context, state) => const OnboardingEndPage(),
     ),
     GoRoute(
       path: '/login',
-      builder: (context, state) => Login(),
+      builder: (context, state) => const Login(),
     ),
     GoRoute(
       path: '/signup',
-      builder: (context, state) => SignUp(),
+      builder: (context, state) => const SignUp(),
     ),
     GoRoute(
       path: '/upcoming',
-      builder: (context, state) => Upcoming(),
+      builder: (context, state) => const Upcoming(),
     ),
     GoRoute(
         path: '/ticketnum',
@@ -69,7 +69,7 @@ GoRouter router = GoRouter(
         }),
     GoRoute(
       path: '/settings',
-      builder: (context, state) => Settings(),
+      builder: (context, state) => const Settings(),
     ),
     GoRoute(
       path: '/profile',
@@ -93,22 +93,22 @@ GoRouter router = GoRouter(
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/home',
-          builder: (context, state) => HomePage(),
+          builder: (context, state) => const HomePage(),
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/ticket',
-          builder: (context, state) => TicketPage(),
+          builder: (context, state) => const TicketPage(),
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/info',
-          builder: (context, state) => Aboutus(),
+          builder: (context, state) => const Aboutus(),
         ),
         GoRoute(
           parentNavigatorKey: _shellNavigatorKey,
           path: '/settings',
-          builder: (context, state) => Settings(),
+          builder: (context, state) => const Settings(),
         ),
       ],
     ),

@@ -43,8 +43,8 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    String emailName = extractBeforeAt(ref.watch(userNotifierProvider)?.email ?? "");
-
+    String emailName =
+        extractBeforeAt(ref.watch(userNotifierProvider)?.email ?? "");
 
     String imagePath;
     switch (selectedFurniture) {
@@ -88,7 +88,9 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
               ],
             ),
-            const SizedBox(height: 26,),
+            const SizedBox(
+              height: 26,
+            ),
             Container(
               width: MediaQuery.of(context).size.width * 1.2,
               height: MediaQuery.of(context).size.height * 0.22,
@@ -98,7 +100,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   alignment: Alignment.centerLeft,
                 ),
                 border: Border.all(
-                  color: Color(0xFFD7B58D),
+                  color: const Color(0xFFD7B58D),
                   width: 2,
                 ),
                 borderRadius: BorderRadius.circular(15),
@@ -110,16 +112,32 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
                 child: Column(
                   children: [
-                    Text(AppLocalizations.of(context)!.welcomeback, style: const TextStyle(fontSize: 25),),
-                    const SizedBox(height: 13,),
-                    Text(AppLocalizations.of(context)!.transformyourhome, style: TextStyle(fontSize: 17),),
-                    Text(AppLocalizations.of(context)!.withourstunning, style: TextStyle(fontSize: 17),),
-                     Text(AppLocalizations.of(context)!.furniture, style: TextStyle(fontSize: 17),),
+                    Text(
+                      AppLocalizations.of(context)!.welcomeback,
+                      style: const TextStyle(fontSize: 25),
+                    ),
+                    const SizedBox(
+                      height: 13,
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.transformyourhome,
+                      style: const TextStyle(fontSize: 17),
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.withourstunning,
+                      style: const TextStyle(fontSize: 17),
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.furniture,
+                      style: const TextStyle(fontSize: 17),
+                    ),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 25,),
+            const SizedBox(
+              height: 25,
+            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -127,47 +145,66 @@ class _HomePageState extends ConsumerState<HomePage> {
                   ElevatedButton(
                     onPressed: onSofaButtonPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedFurniture == AppLocalizations.of(context)!.sofa ? Colors.transparent : buttonColor,
+                      backgroundColor: selectedFurniture ==
+                              AppLocalizations.of(context)!.sofa
+                          ? Colors.transparent
+                          : buttonColor,
                       foregroundColor: const Color(0xffffffff),
                       side: const BorderSide(color: Color(0xFFD7B58D)),
                     ),
                     child: Text(AppLocalizations.of(context)!.sofa),
                   ),
-                  const SizedBox(width: 7,),
+                  const SizedBox(
+                    width: 7,
+                  ),
                   ElevatedButton(
                     onPressed: onKitchencabinetButtonPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedFurniture == AppLocalizations.of(context)!.kitchencabinet ? Colors.transparent : buttonColor,
+                      backgroundColor: selectedFurniture ==
+                              AppLocalizations.of(context)!.kitchencabinet
+                          ? Colors.transparent
+                          : buttonColor,
                       foregroundColor: const Color(0xffffffff),
                       side: const BorderSide(color: Color(0xFFD7B58D)),
                     ),
                     child: Text(AppLocalizations.of(context)!.kitchencabinet),
                   ),
-                  const SizedBox(width: 7,),
+                  const SizedBox(
+                    width: 7,
+                  ),
                   ElevatedButton(
                     onPressed: onDiningTableButtonPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedFurniture == AppLocalizations.of(context)!.diningtable ? Colors.transparent: buttonColor,
+                      backgroundColor: selectedFurniture ==
+                              AppLocalizations.of(context)!.diningtable
+                          ? Colors.transparent
+                          : buttonColor,
                       foregroundColor: const Color(0xffffffff),
                       side: const BorderSide(color: Color(0xFFD7B58D)),
                     ),
                     child: Text(AppLocalizations.of(context)!.diningtable),
                   ),
-                  const SizedBox(width: 7,),
+                  const SizedBox(
+                    width: 7,
+                  ),
                   ElevatedButton(
                     onPressed: onTvStandButtonPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedFurniture == AppLocalizations.of(context)!.tvstand ? Colors.transparent : buttonColor,
+                      backgroundColor: selectedFurniture ==
+                              AppLocalizations.of(context)!.tvstand
+                          ? Colors.transparent
+                          : buttonColor,
                       foregroundColor: const Color(0xffffffff),
                       side: const BorderSide(color: Color(0xFFD7B58D)),
                     ),
-                    child:  Text(AppLocalizations.of(context)!.welcomeback),
+                    child: Text(AppLocalizations.of(context)!.welcomeback),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 25,),
-
+            const SizedBox(
+              height: 25,
+            ),
             Container(
               padding: const EdgeInsets.only(top: 10.0),
               decoration: BoxDecoration(

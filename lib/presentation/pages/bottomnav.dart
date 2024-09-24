@@ -12,7 +12,7 @@ class BottomNav extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _items = [
+    final items = [
       SalomonBottomBarItem(
         icon: const Icon(SolarIconsBold.home),
         title: Text(AppLocalizations.of(context)!.home),
@@ -35,16 +35,14 @@ class BottomNav extends ConsumerWidget {
 
     return ClipRRect(
       child: SalomonBottomBar(
-        items: _items,
+        items: items,
         currentIndex: currentIndex,
         onTap: (index) {
           if (index == currentIndex) {
-
             return;
           }
 
           ref.read(pageIndexProvider.notifier).setIndex(index);
-
 
           switch (index) {
             case 1:

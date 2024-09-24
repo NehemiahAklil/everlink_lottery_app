@@ -1,4 +1,3 @@
-
 import 'package:everlink_lottery_app/presentation/pages/bottomnav.dart';
 import 'package:everlink_lottery_app/presentation/pages/drawerpage.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
@@ -41,10 +40,8 @@ class _UpcomingState extends State<Upcoming> {
               const SizedBox(height: 15),
               _buildHeader(),
               const SizedBox(height: 20),
-              ...furnitureItems
-                  .map(
-                      (item) => FurnitureCard(item: item, softWhite: softWhite))
-                  .toList(),
+              ...furnitureItems.map(
+                  (item) => FurnitureCard(item: item, softWhite: softWhite)),
             ],
           ),
         ),

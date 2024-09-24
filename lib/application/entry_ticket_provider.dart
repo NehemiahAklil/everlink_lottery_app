@@ -8,9 +8,9 @@ part 'entry_ticket_provider.g.dart';
 @riverpod
 Future<List<EntryTicket>> selectedEntryTickets(SelectedEntryTicketsRef ref,
     {required String lotteryId}) async {
-  final FirebaseEntryTicketRepository _entryTicketRepository =
+  final FirebaseEntryTicketRepository entryTicketRepository =
       locator<FirebaseEntryTicketRepository>();
-  var entries = await _entryTicketRepository.get(lotteryId);
+  var entries = await entryTicketRepository.get(lotteryId);
   return entries.fold((error) {
     return [];
   }, (newEntries) => newEntries);

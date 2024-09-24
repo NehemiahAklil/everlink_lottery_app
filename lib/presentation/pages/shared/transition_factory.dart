@@ -15,7 +15,7 @@ class TransitionFactory {
           SlideTransition(
               position: animation.drive(
                 Tween<Offset>(
-                  begin: Offset(0.75, 0),
+                  begin: const Offset(0.75, 0),
                   end: Offset.zero,
                 ).chain(CurveTween(curve: Curves.easeInOutCubic)),
               ),

@@ -24,8 +24,8 @@ class AuthNotifier extends _$AuthNotifier {
   }
 
   void setPasswordMismatch() {
-    state =
-        AuthenticationState.unauthenticated(message: "Passwords don't match");
+    state = const AuthenticationState.unauthenticated(
+        message: "Passwords don't match");
   }
 
   Future<void> signup({required String email, required String password}) async {

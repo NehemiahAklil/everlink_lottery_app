@@ -46,7 +46,7 @@ class FirebaseFurnitureRepository {
         updateTime: furniture.updateAt,
       );
       await docRef.doc(newFurniture.id).update(newFurniture.toMap());
-    } on FirebaseException catch (e) {
+    } on FirebaseException {
       print('error occured');
     }
   }

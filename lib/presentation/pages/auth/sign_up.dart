@@ -1,11 +1,9 @@
 import 'package:everlink_lottery_app/application/authentication_provider.dart';
-import 'package:everlink_lottery_app/config/router/routes.dart';
 import 'package:everlink_lottery_app/presentation/pages/auth/widgets/auth_top_bar.dart';
 import 'package:everlink_lottery_app/presentation/providers/auth_field_controller_provider.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:everlink_lottery_app/presentation/widgets/blurred_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:everlink_lottery_app/presentation/pages/auth/login.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';

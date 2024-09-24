@@ -1,4 +1,3 @@
-import 'package:everlink_lottery_app/presentation/pages/onboarding/end_page.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/widgets/onboarding_app_bar.dart';
 import 'package:everlink_lottery_app/presentation/widgets/logo.dart';
 import 'package:everlink_lottery_app/presentation/widgets/pulsing_horizontal_dot_menu.dart';

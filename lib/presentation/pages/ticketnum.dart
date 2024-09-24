@@ -80,7 +80,7 @@ class _TicketNumberState extends ConsumerState<TicketNumber> {
         body: selectedEntityTickets.when(
             loading: () => const Center(child: CircularProgressIndicator()),
             error: (error, stackTrace) => Container(
-                  child: Text("Can't seem to get values"),
+                  child: const Text("Can't seem to get values"),
                 ),
             data: (selectedValues) {
               // List<int> selectedNumbers = selectedValues
@@ -152,7 +152,7 @@ class _TicketNumberState extends ConsumerState<TicketNumber> {
                                 .map((num) => Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 4.0),
-                                      child: Container(
+                                      child: SizedBox(
                                         width: 75,
                                         height: 65,
                                         child: Chip(
@@ -164,7 +164,7 @@ class _TicketNumberState extends ConsumerState<TicketNumber> {
                                           ),
                                           backgroundColor: softWhite,
                                           shape: RoundedRectangleBorder(
-                                            side: BorderSide(
+                                            side: const BorderSide(
                                                 color: Color(0xFFD7B58D)),
                                             borderRadius:
                                                 BorderRadius.circular(8),
@@ -177,7 +177,7 @@ class _TicketNumberState extends ConsumerState<TicketNumber> {
                         ),
                         Expanded(
                           child: GridView.builder(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: const EdgeInsets.only(top: 10),
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 5,

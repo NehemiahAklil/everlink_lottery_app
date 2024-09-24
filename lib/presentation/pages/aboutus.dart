@@ -35,7 +35,7 @@ class _AboutusState extends State<Aboutus> {
                         onPressed: () {
                           context.go('/home');
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back,
                           color: softWhite,
                         ),
@@ -59,7 +59,10 @@ class _AboutusState extends State<Aboutus> {
                 ),
                 const SizedBox(height: 10),
                 Container(
-                  padding: EdgeInsets.only(top: 30, left: screenWidth * 0.05, right: screenWidth * 0.05),
+                  padding: EdgeInsets.only(
+                      top: 30,
+                      left: screenWidth * 0.05,
+                      right: screenWidth * 0.05),
                   child: Center(
                     child: Container(
                       padding: EdgeInsets.symmetric(
@@ -92,24 +95,26 @@ class _AboutusState extends State<Aboutus> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Row(
-                            children: const [
+                          const Row(
+                            children: [
                               Icon(Icons.phone, color: softWhite),
                               SizedBox(width: 12),
                               Text(
                                 "0955667788",
-                                style: TextStyle(fontSize: 20, color: softWhite),
+                                style:
+                                    TextStyle(fontSize: 20, color: softWhite),
                               ),
                             ],
                           ),
                           const SizedBox(height: 10),
-                          Row(
-                            children: const [
+                          const Row(
+                            children: [
                               Icon(Icons.email, color: softWhite),
                               SizedBox(width: 12),
                               Text(
                                 "Example@gmail.com",
-                                style: TextStyle(fontSize: 20, color: softWhite),
+                                style:
+                                    TextStyle(fontSize: 20, color: softWhite),
                               ),
                             ],
                           ),
@@ -120,7 +125,8 @@ class _AboutusState extends State<Aboutus> {
                               const SizedBox(width: 12),
                               Text(
                                 AppLocalizations.of(context)!.mexico,
-                                style: const TextStyle(fontSize: 20, color: softWhite),
+                                style: const TextStyle(
+                                    fontSize: 20, color: softWhite),
                               ),
                             ],
                           ),

@@ -24,7 +24,7 @@ class _TicketPageState extends ConsumerState<TicketPage> {
   Widget build(BuildContext context) {
     final tickets = ref.watch(ticketCollectionNotifierProvider);
 
-    Widget _buildHeader() {
+    Widget buildHeader() {
       return Align(
         alignment: Alignment.topRight,
         child: Padding(
@@ -104,7 +104,7 @@ class _TicketPageState extends ConsumerState<TicketPage> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            _buildHeader(),
+            buildHeader(),
             switch (tickets) {
               AsyncData(:final value) => ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
@@ -170,7 +170,7 @@ class FurnitureCard extends StatelessWidget {
                     width: double.infinity,
                     fit: BoxFit.cover,
                   )
-                : Text("NO IMAGE"),
+                : const Text("NO IMAGE"),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16, left: 16),
@@ -220,7 +220,7 @@ class FurnitureCard extends StatelessWidget {
           ),
           Visibility(
             visible: !isUpcoming,
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ElevatedButton(
                 onPressed: () {

@@ -56,7 +56,10 @@ class _HelpState extends State<Help> {
                 ),
                 const SizedBox(height: 30),
                 Container(
-                  padding: EdgeInsets.only(top: 30, left: screenWidth * 0.05, right: screenWidth * 0.05),
+                  padding: EdgeInsets.only(
+                      top: 30,
+                      left: screenWidth * 0.05,
+                      right: screenWidth * 0.05),
                   child: Center(
                     child: Container(
                       padding: EdgeInsets.all(screenWidth * 0.05),
@@ -95,8 +98,8 @@ class _HelpState extends State<Help> {
                             ),
                           ),
                           const SizedBox(height: 10),
-                          Row(
-                            children: const [
+                          const Row(
+                            children: [
                               Icon(
                                 Icons.phone,
                                 color: softWhite,
@@ -112,8 +115,8 @@ class _HelpState extends State<Help> {
                             ],
                           ),
                           const SizedBox(height: 10),
-                          Row(
-                            children: const [
+                          const Row(
+                            children: [
                               Icon(
                                 Icons.email,
                                 color: softWhite,
@@ -121,7 +124,8 @@ class _HelpState extends State<Help> {
                               SizedBox(width: 12),
                               Text(
                                 "Example@gmail.com",
-                                style: TextStyle(fontSize: 20, color: softWhite),
+                                style:
+                                    TextStyle(fontSize: 20, color: softWhite),
                               ),
                             ],
                           ),
@@ -135,7 +139,8 @@ class _HelpState extends State<Help> {
                               const SizedBox(width: 12),
                               Text(
                                 AppLocalizations.of(context)!.mexico,
-                                style: const TextStyle(fontSize: 20, color: softWhite),
+                                style: const TextStyle(
+                                    fontSize: 20, color: softWhite),
                               ),
                             ],
                           ),
