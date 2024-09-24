@@ -47,9 +47,11 @@ GoRouter router = GoRouter(
       builder: (context, state) => Upcoming(),
     ),
     GoRoute(
-      path: '/ticketnum',
-      builder: (context, state) => Ticketnumber(),
-    ),
+        path: '/ticketnum',
+        builder: (context, state) {
+          final id = state.uri.queryParameters["id"];
+          return TicketNumber(lotteryId: id ?? "");
+        }),
     GoRoute(
       path: '/payment',
       builder: (context, state) => Payment(),
@@ -68,9 +70,9 @@ GoRouter router = GoRouter(
         child: BottomNavigationBarScaffold(child: child),
         transitionsBuilder: (context, animation, secondaryAnimation, child) =>
             FadeTransition(
-              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
-              child: child,
-            ),
+          opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+          child: child,
+        ),
       ),
       routes: [
         GoRoute(

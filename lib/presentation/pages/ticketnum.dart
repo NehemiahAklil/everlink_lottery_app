@@ -1,29 +1,20 @@
+import 'package:everlink_lottery_app/application/entry_ticket_provider.dart';
+import 'package:everlink_lottery_app/domain/entity/entry_ticket.dart';
+import 'package:everlink_lottery_app/locator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class TicketNumber extends ConsumerStatefulWidget {
+  const TicketNumber({required this.lotteryId, super.key});
+  final String lotteryId;
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Ticketnumber(),
-    );
-  }
-
-  static void setLocale(BuildContext context, Locale read) {}
+  ConsumerState<ConsumerStatefulWidget> createState() => _TicketNumberState();
 }
 
-class Ticketnumber extends StatefulWidget {
-  @override
-  _TicketnumberState createState() => _TicketnumberState();
-}
-
-class _TicketnumberState extends State<Ticketnumber> {
+class _TicketNumberState extends ConsumerState<TicketNumber> {
   List<int> selectedNumbers = [];
   List<int> numbers = List.generate(100, (index) => index + 1);
   List<int> filteredNumbers = [];
@@ -31,11 +22,14 @@ class _TicketnumberState extends State<Ticketnumber> {
   FocusNode searchFocusNode = FocusNode();
 
   // Simulate a logged-in status
-  bool isLoggedIn = false; // Change this to true if user is logged in
+  final FirebaseAuth _firebaseAuth = locator<FirebaseAuth>();
+  // Change this to true if user is logged in
+  bool isLoggedIn = false;
 
   @override
   void initState() {
     super.initState();
+    isLoggedIn = _firebaseAuth.currentUser != null;
     filteredNumbers = numbers;
   }
 
@@ -75,6 +69,16 @@ class _TicketnumberState extends State<Ticketnumber> {
 
   @override
   Widget build(BuildContext context) {
+    ref.watch(selectedEntryTicketsProvider(lotteryId: widget.lotteryId)).when(
+        data: (selectedValues) {
+          setState(() {
+            selectedNumbers = selectedValues
+                .map((EntryTicket el) => int.parse(el.id))
+                .toList();
+          });
+        },
+        error: (error, stackTrace) {},
+        loading: () {});
     return Scaffold(
       body: GestureDetector(
         onTap: () {
@@ -82,7 +86,8 @@ class _TicketnumberState extends State<Ticketnumber> {
         },
         child: CustomBackground(
           child: Padding(
-            padding: const EdgeInsets.only(top: 45.0, left: 16, right: 16, bottom: 16),
+            padding: const EdgeInsets.only(
+                top: 45.0, left: 16, right: 16, bottom: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -92,7 +97,8 @@ class _TicketnumberState extends State<Ticketnumber> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.white),
+                      icon: const Icon(Icons.arrow_back_ios_sharp,
+                          color: Colors.white),
                       iconSize: 30,
                     ),
                   ],
@@ -120,29 +126,34 @@ class _TicketnumberState extends State<Ticketnumber> {
                 const SizedBox(height: 25),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: selectedNumbers.map((num) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Container(
-                      width: 75,
-                      height: 65,
-                      child: Chip(
-                        label: Text(
-                          '$num',
-                          style: const TextStyle(color: Colors.black, fontSize: 20),
-                        ),
-                        backgroundColor: softWhite,
-                        shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Color(0xFFD7B58D)),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                  )).toList(),
+                  children: selectedNumbers
+                      .map((num) => Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 4.0),
+                            child: Container(
+                              width: 75,
+                              height: 65,
+                              child: Chip(
+                                label: Text(
+                                  '$num',
+                                  style: const TextStyle(
+                                      color: Colors.black, fontSize: 20),
+                                ),
+                                backgroundColor: softWhite,
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(color: Color(0xFFD7B58D)),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                            ),
+                          ))
+                      .toList(),
                 ),
                 Expanded(
                   child: GridView.builder(
                     padding: EdgeInsets.only(top: 10),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 5,
                       mainAxisSpacing: 8,
                       crossAxisSpacing: 8,
@@ -155,7 +166,9 @@ class _TicketnumberState extends State<Ticketnumber> {
                         onTap: () => toggleNumber(number),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: isSelected ? Colors.grey : const Color(0xFF222222).withOpacity(0.8),
+                            color: isSelected
+                                ? Colors.grey
+                                : const Color(0xFF222222).withOpacity(0.8),
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(color: const Color(0xFFD7B58D)),
                           ),
@@ -174,7 +187,6 @@ class _TicketnumberState extends State<Ticketnumber> {
                   ),
                 ),
                 const SizedBox(height: 10),
-
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.transparent,
@@ -182,26 +194,31 @@ class _TicketnumberState extends State<Ticketnumber> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 35, vertical: 15),
                   ),
                   onPressed: () {
                     if (selectedNumbers.isEmpty) {
                       // Show a message if no number is selected
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Please select a number before proceeding.')),
+                        const SnackBar(
+                            content: Text(
+                                'Please select a number before proceeding.')),
                       );
                     } else {
                       // Check if the user is logged in
                       if (isLoggedIn) {
                         // Navigate to the payment page
-                        context.go('/payment'); // Change to your actual payment route
+                        context.go(
+                            '/payment'); // Change to your actual payment route
                       } else {
                         // Navigate to the login page
                         context.go('/login');
                       }
                     }
                   },
-                  child: const Text('Buy Ticket', style: TextStyle(color: Colors.white, fontSize: 18)),
+                  child: const Text('Buy Ticket',
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
                 ),
               ],
             ),

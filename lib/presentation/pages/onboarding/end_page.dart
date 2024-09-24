@@ -1,3 +1,4 @@
+import 'package:everlink_lottery_app/config/router/routes.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/widgets/onboarding_app_bar.dart';
 import 'package:everlink_lottery_app/presentation/widgets/background.dart';
 import 'package:everlink_lottery_app/presentation/widgets/logo.dart';
@@ -14,7 +15,6 @@ class OnboardingEndPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-     _checkOnboardingStatus(context);
     return Scaffold(
         appBar: OnboardingAppBar(ref),
         body: CustomBackground(
@@ -66,10 +66,11 @@ class OnboardingEndPage extends ConsumerWidget {
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.9,
                   child: ElevatedButton(
-                    onPressed: () async{
-                       SharedPreferences prefs = await SharedPreferences.getInstance();
-                       await prefs.setBool('onboarding_complete', true);
-                      context.push('/home');
+                    onPressed: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      await prefs.setBool('onboarding_complete', true);
+                      router.go('/home');
                       // Navigator.of(context).push(
                       //   MaterialPageRoute(
                       //     builder: (context) => const Login(),
@@ -95,13 +96,3 @@ class OnboardingEndPage extends ConsumerWidget {
         ));
   }
 }
-
-void _checkOnboardingStatus(BuildContext context) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? onboardingComplete = prefs.getBool('onboarding_complete');
-
-    if (onboardingComplete == true) {
-      context.push('/home');
-    }
-  }
-

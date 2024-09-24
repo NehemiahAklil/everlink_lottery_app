@@ -6,7 +6,7 @@ part 'page_provider.g.dart';
 class PageIndex extends _$PageIndex {
   @override
   int build() {
-    return 1;
+    return 0;
   }
 
   void setIndex(index) {

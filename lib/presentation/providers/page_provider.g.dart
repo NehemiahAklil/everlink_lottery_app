@@ -6,7 +6,7 @@ part of 'page_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pageIndexHash() => r'0687b8d97ec09ce31b006f9532453ae12e6e244e';
+String _$pageIndexHash() => r'c4f721b2446f4c6046ebfdfbde1608e0a0c7cf58';
 
 /// See also [PageIndex].
 @ProviderFor(PageIndex)
