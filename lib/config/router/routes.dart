@@ -13,6 +13,7 @@ import 'package:everlink_lottery_app/presentation/pages/shared/bottom_navigation
 import 'package:everlink_lottery_app/presentation/pages/ticketnum.dart';
 import 'package:everlink_lottery_app/presentation/pages/ticketpage.dart';
 import 'package:everlink_lottery_app/presentation/pages/upcoming.dart';
+import 'package:everlink_lottery_app/presentation/pages/winner.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:everlink_lottery_app/presentation/pages/onboarding/start_page.dart';
@@ -74,6 +75,10 @@ GoRouter router = GoRouter(
     GoRoute(
       path: '/profile',
       builder: (context, state) => Profile(),
+    ),
+    GoRoute(
+      path: '/winner',
+      builder: (context, state) => const Winner(),
     ),
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
