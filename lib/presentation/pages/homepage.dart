@@ -88,9 +88,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 26,
-            ),
+            const SizedBox(height: 26),
             Container(
               width: MediaQuery.of(context).size.width * 1.2,
               height: MediaQuery.of(context).size.height * 0.22,
@@ -116,9 +114,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       AppLocalizations.of(context)!.welcomeback,
                       style: const TextStyle(fontSize: 25),
                     ),
-                    const SizedBox(
-                      height: 13,
-                    ),
+                    const SizedBox(height: 13),
                     Text(
                       AppLocalizations.of(context)!.transformyourhome,
                       style: const TextStyle(fontSize: 17),
@@ -135,9 +131,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
+            const SizedBox(height: 25),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -145,8 +139,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                   ElevatedButton(
                     onPressed: onSofaButtonPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedFurniture ==
-                              AppLocalizations.of(context)!.sofa
+                      backgroundColor: selectedFurniture == 'Sofa'
                           ? Colors.transparent
                           : buttonColor,
                       foregroundColor: const Color(0xffffffff),
@@ -154,14 +147,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                     child: Text(AppLocalizations.of(context)!.sofa),
                   ),
-                  const SizedBox(
-                    width: 7,
-                  ),
+                  const SizedBox(width: 7),
                   ElevatedButton(
                     onPressed: onKitchencabinetButtonPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedFurniture ==
-                              AppLocalizations.of(context)!.kitchencabinet
+                      backgroundColor: selectedFurniture == 'Kitchen Cabinet'
                           ? Colors.transparent
                           : buttonColor,
                       foregroundColor: const Color(0xffffffff),
@@ -169,14 +159,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                     child: Text(AppLocalizations.of(context)!.kitchencabinet),
                   ),
-                  const SizedBox(
-                    width: 7,
-                  ),
+                  const SizedBox(width: 7),
                   ElevatedButton(
                     onPressed: onDiningTableButtonPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedFurniture ==
-                              AppLocalizations.of(context)!.diningtable
+                      backgroundColor: selectedFurniture == 'Dining Table'
                           ? Colors.transparent
                           : buttonColor,
                       foregroundColor: const Color(0xffffffff),
@@ -184,14 +171,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                     ),
                     child: Text(AppLocalizations.of(context)!.diningtable),
                   ),
-                  const SizedBox(
-                    width: 7,
-                  ),
+                  const SizedBox(width: 7),
                   ElevatedButton(
                     onPressed: onTvStandButtonPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedFurniture ==
-                              AppLocalizations.of(context)!.tvstand
+                      backgroundColor: selectedFurniture == 'Tv Stand'
                           ? Colors.transparent
                           : buttonColor,
                       foregroundColor: const Color(0xffffffff),
@@ -202,9 +186,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 25,
-            ),
+            const SizedBox(height: 25),
             Container(
               padding: const EdgeInsets.only(top: 10.0),
               decoration: BoxDecoration(
