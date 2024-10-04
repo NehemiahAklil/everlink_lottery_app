@@ -197,7 +197,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                       foregroundColor: const Color(0xffffffff),
                       side: const BorderSide(color: Color(0xFFD7B58D)),
                     ),
-                    child: Text(AppLocalizations.of(context)!.welcomeback),
+                    child: Text(AppLocalizations.of(context)!.tvstand),
                   ),
                 ],
               ),
