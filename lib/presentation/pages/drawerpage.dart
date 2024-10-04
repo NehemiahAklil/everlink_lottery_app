@@ -72,9 +72,7 @@ class _DrawerPageState extends ConsumerState<DrawerPage> {
               _buildDrawerItem(
                 icon: const Icon(SolarIconsBold.bell),
                 title: AppLocalizations.of(context)!.announcement,
-                onTap: () {
-                  // Add functionality here
-                },
+                onTap: () => context.go('/winner'),
               ),
               const LineSeparator(),
               _buildDrawerItem(
