@@ -87,5 +87,8 @@
   "save": "Save",
   "enter": "Enter",
   "profilesaved": "Profile saved",
-  "isrequired": "is required"
+  "isrequired": "is required",
+  "invalidemail": "Please enter a valid email address.",
+  "invalidphonenumber": "Please enter a valid phone number."
+
 }
