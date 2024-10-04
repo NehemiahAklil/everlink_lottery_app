@@ -88,5 +88,7 @@
   "save": "ማስቀመጥ",
   "enter": "አስገባ",
   "profilesaved": "መገለጫ ተቀምጧል",
-  "isrequired": "የሚፈለግ ነው።"
+  "isrequired": "የሚፈለግ ነው።",
+ "invalidemail": "እባክዎ የሚሰራ ኢሜይል አድራሻ ያስገቡ።",
+ "invalidphonenumber": "እባክዎ የሚሰራ ስልክ ቁጥር ያስገቡ::"
 }
